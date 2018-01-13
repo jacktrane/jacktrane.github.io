@@ -4,11 +4,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>莫青留 | 莫青留</title>
+  <title>关于 | 莫青留</title>
   <meta name="description" content="jacktrane" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> -->
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/css/screen.css" />
   <meta name="generator" content="莫青留">
@@ -31,16 +33,20 @@
                 <ul class="first-level">
                     <li>
                         <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Archive</a>
+                            </i>&nbsp;&nbsp;归档</a>
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-archive"></i>
-                                Archive</h2>
-                            <a class="mp-back" href="#">back</a>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
                             <form id="search-form" action="">
                                 <input type="text" class="search search-archive" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2018/01/13/test2/">test2</a>
+                                </li>
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2018/01/11/test/">test</a>
@@ -56,17 +62,22 @@
                     </li>
                     <li>
                         <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Categories</a>
+                            </i>&nbsp;&nbsp;分类</a>
 
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-copy"></i>
-                                Categories</h2>
-                            <a class="mp-back" href="#">back</a>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
                             <form id="search-form" action="">
                                 <input type="text" class="search search-category" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/生活/">&nbsp;&nbsp;&nbsp;生活</a>
+                                    <small>2</small>
+                                </li>
                                 
                                 </div>
                             </ul>
@@ -74,25 +85,37 @@
                     </li>
                     <li>
                         <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Tags</a>
+                            </i>&nbsp;&nbsp;标签</a>
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-tags"></i>
-                                Tags</h2>
-                            <a class="mp-back" href="#">back</a>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
                             <form id="search-form" action="">
                                 <input type="text" class="search search-tag" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
                                 
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/感想/">&nbsp;&nbsp;&nbsp;感想</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/敢做/">&nbsp;&nbsp;&nbsp;敢做</a>
+                                    <small>1</small>
+                                </li>
+                                
                                 </div>
                             </ul>
                         </div>
                     </li>
                     
-                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
-
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a></li>
+                    
+                        <li><a class="fa fa-github" href="https://github.com/jacktrane " target=_blank>&nbsp;&nbsp;&nbsp;Github</a></li>
+                    
+                    
                 </ul>
 
             </div>
@@ -100,13 +123,21 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2018/01/13/test2/">test2</a>
+                
                     <a  data-pjax href="/2018/01/11/test/">test</a>
                 
                     <a  data-pjax href="/2018/01/08/hello-world/">Hello World</a>
                 
                 
+                    <a data-pjax href="/categories/生活/">&nbsp;&nbsp;生活</a>
                 
-                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+                
+                    <a data-pjax href="/tags/感想/">&nbsp;&nbsp;感想</a>
+                
+                    <a data-pjax href="/tags/敢做/">&nbsp;&nbsp;敢做</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a>
             </div>
             <nav class="nexus">
                 <li  style="border-left: 1px solid #c6d0da;">
@@ -116,10 +147,10 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">莫青留</a></li>
+                        <li id="navbar-title"><a href="#">关于</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
-                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
                             </a>
                             <div class="hidden-box">
                                 <ul id="toc"></ul>
@@ -145,14 +176,14 @@
                   <div class="tag-tile">
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">莫青留</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">关于</h1>
                     
                     
 
     </span>
 
         <section class="post-content">
-            <h6 id="jacktrane-wu"><a href="#jacktrane-wu" class="headerlink" title="jacktrane wu"></a>jacktrane wu</h6><h5 id="读书，看戏，饮酒，观人生百态。"><a href="#读书，看戏，饮酒，观人生百态。" class="headerlink" title="读书，看戏，饮酒，观人生百态。"></a>读书，看戏，饮酒，观人生百态。</h5>
+            <h6 id="jacktrane-wu"><a href="#jacktrane-wu" class="headerlink" title="jacktrane wu"></a>jacktrane wu</h6><h5 id="读书，看戏，饮酒，观人生百态。"><a href="#读书，看戏，饮酒，观人生百态。" class="headerlink" title="读书，看戏，饮酒，观人生百态。"></a>读书，看戏，饮酒，观人生百态。</h5><h5 id="离群索居者，总是需要有自己的一番天地。"><a href="#离群索居者，总是需要有自己的一番天地。" class="headerlink" title="离群索居者，总是需要有自己的一番天地。"></a>离群索居者，总是需要有自己的一番天地。</h5>
         </section>
         
             
@@ -167,9 +198,11 @@
   
 <footer class="site-footer">
     
+    <a class="subscribe icon-feed" href="http://feed43.com/1225037838675024.xml"><span class="tooltip">Subscribe!</span></a>
+    
     <div class="inner">
         <section class="copyright"><a href="/"></a> &copy; 莫青留 2018</section>
-        <!--<section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>-->
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
     </div>
 </footer>
 </div>
@@ -192,6 +225,7 @@
 </div>
   
 <script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
 <script>
     if (!window.jQuery) {
         var script = document.createElement('script');

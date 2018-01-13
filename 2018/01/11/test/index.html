@@ -9,6 +9,8 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> -->
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/css/screen.css" />
   <meta name="generator" content="莫青留">
@@ -31,16 +33,20 @@
                 <ul class="first-level">
                     <li>
                         <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Archive</a>
+                            </i>&nbsp;&nbsp;归档</a>
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-archive"></i>
-                                Archive</h2>
-                            <a class="mp-back" href="#">back</a>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
                             <form id="search-form" action="">
                                 <input type="text" class="search search-archive" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2018/01/13/test2/">test2</a>
+                                </li>
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2018/01/11/test/">test</a>
@@ -56,17 +62,22 @@
                     </li>
                     <li>
                         <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Categories</a>
+                            </i>&nbsp;&nbsp;分类</a>
 
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-copy"></i>
-                                Categories</h2>
-                            <a class="mp-back" href="#">back</a>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
                             <form id="search-form" action="">
                                 <input type="text" class="search search-category" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/生活/">&nbsp;&nbsp;&nbsp;生活</a>
+                                    <small>2</small>
+                                </li>
                                 
                                 </div>
                             </ul>
@@ -74,25 +85,37 @@
                     </li>
                     <li>
                         <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Tags</a>
+                            </i>&nbsp;&nbsp;标签</a>
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-tags"></i>
-                                Tags</h2>
-                            <a class="mp-back" href="#">back</a>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
                             <form id="search-form" action="">
                                 <input type="text" class="search search-tag" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
                                 
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/感想/">&nbsp;&nbsp;&nbsp;感想</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/敢做/">&nbsp;&nbsp;&nbsp;敢做</a>
+                                    <small>1</small>
+                                </li>
+                                
                                 </div>
                             </ul>
                         </div>
                     </li>
                     
-                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
-
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a></li>
+                    
+                        <li><a class="fa fa-github" href="https://github.com/jacktrane " target=_blank>&nbsp;&nbsp;&nbsp;Github</a></li>
+                    
+                    
                 </ul>
 
             </div>
@@ -100,13 +123,21 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2018/01/13/test2/">test2</a>
+                
                     <a  data-pjax href="/2018/01/11/test/">test</a>
                 
                     <a  data-pjax href="/2018/01/08/hello-world/">Hello World</a>
                 
                 
+                    <a data-pjax href="/categories/生活/">&nbsp;&nbsp;生活</a>
                 
-                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+                
+                    <a data-pjax href="/tags/感想/">&nbsp;&nbsp;感想</a>
+                
+                    <a data-pjax href="/tags/敢做/">&nbsp;&nbsp;敢做</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a>
             </div>
             <nav class="nexus">
                 <li  style="border-left: 1px solid #c6d0da;">
@@ -119,7 +150,7 @@
                         <li id="navbar-title"><a href="#">test</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
-                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
                             </a>
                             <div class="hidden-box">
                                 <ul id="toc"></ul>
@@ -158,17 +189,65 @@
     </span>
 
         <section class="post-content">
-            
+            <ul>
+<li><p>这是列表<br>Markdown是一种可以使用普通文本编辑器编写的标记语言，<br>通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<ul>
+<li>这也是列表<ul>
+<li>这个缩进可以使用tab键<ul>
+<li>再缩进一下</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>这还是一种列表</li>
+</ul>
+<p>1 .这是有序列表<br>2 .有序列表</p>
+</li>
+</ul>
+<p>这是我的博客主页<a href="http://www.jianshu.com/users/c87c7667648a/latest_articles" target="_blank" rel="noopener">流川枫debug</a><br><img src="http://upload-images.jianshu.io/upload_images/1803066-b117f5a984064bd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>import url lib</p>
+<blockquote>
+<p>嵌套的区域</p>
+</blockquote>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">echo "我的第一段 PHP 脚本！";</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">key1 := <span class="number">1</span></span><br><span class="line">key2 := <span class="number">2</span></span><br><span class="line">key3 := key1 + key2</span><br></pre></td></tr></table></figure>
+<p><em>这是斜体</em><br><strong>这是粗体</strong></p>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th style="text-align:center">居中的列</th>
+<th style="text-align:right">靠右的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对其是</td>
+<td style="text-align:center">方式由</td>
+<td style="text-align:right">上面的：决定</td>
+</tr>
+<tr>
+<td>默认无：</td>
+<td style="text-align:center">两侧有：</td>
+<td style="text-align:right">右侧有：</td>
+</tr>
+</tbody>
+</table>
+
         </section>
         
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
                 
-                <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+                <a data-pjax class="newer-posts" href="/2018/01/13/test2/">← 上一页</a>
                 
-                <a class="share-button" data-original-title title>Share this Post</a>
+                <!-- <a class="share-button" data-original-title title>Share this Post</a> -->
                 
-                <a data-pjax class="older-posts" href="/2018/01/08/hello-world/">Next Post →</a>
+                <a data-pjax class="older-posts" href="/2018/01/08/hello-world/">下一页 →</a>
                 
 
         </nav>
@@ -187,9 +266,11 @@
   
 <footer class="site-footer">
     
+    <a class="subscribe icon-feed" href="http://feed43.com/1225037838675024.xml"><span class="tooltip">Subscribe!</span></a>
+    
     <div class="inner">
         <section class="copyright"><a href="/"></a> &copy; 莫青留 2018</section>
-        <!--<section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>-->
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
     </div>
 </footer>
 </div>
@@ -212,6 +293,7 @@
 </div>
   
 <script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
 <script>
     if (!window.jQuery) {
         var script = document.createElement('script');
