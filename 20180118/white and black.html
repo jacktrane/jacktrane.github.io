@@ -16,8 +16,9 @@
   <!-- <link rel="stylesheet" type="text/css" href="/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/css/screen.css" /> -->
   <meta name="generator" content="莫青留">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
+  <!-- <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> --> 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   
   
   
@@ -180,9 +181,9 @@
                   <div class="tag-tile">
                       
                       
-                      <a data-pjax href='/tags/短句/' style='color:#D5D5D5'>短句</a>
-                      
                       <a data-pjax href='/tags/无聊/' style='color:#D5D5D5'>无聊</a>
+                      
+                      <a data-pjax href='/tags/短句/' style='color:#D5D5D5'>短句</a>
                       
                       
                   </div>
@@ -226,21 +227,21 @@
 
 <!-- gitment -->
 
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  var gitment = new Gitment({
-    id: window.location.pathname, // 可选。默认为 location.href
-    owner: 'jacktrane', // 可以是你的GitHub用户名，也可以是github id
-    repo: 'jacktrane.github.io', 
-    oauth: {
-      client_id: '53fa0254c214c8d54f57',
-      client_secret: '7d15cd0e70e845035466d2e4e728ddfbad1ee340', 
-    },
-  })
-  gitment.render('comment-box')
-</script>
-<!-- gitalk -->
+  
+
+  <script type="text/javascript">
+    new Valine({
+      el: '#comment-box' ,
+      notify:true, 
+      verify:true, 
+      appId: 'x6jyNiRvoa6o3paWWHzys2aD-gzGzoHsz',
+      appKey: 'XlN4DtMlGEa79xn1AWnUHWbN',
+      path:window.location.pathname, 
+      avatar:'identicon' 
+  });
+  </script>
+   
+
 
 <!-- -->
 
