@@ -50,6 +50,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/20180121/Twelve-Factors.html">云原生应用服务的12-Factor</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/20180118/white and black.html">白与黑</a>
                                 </li>
                                 
@@ -80,6 +84,11 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-category-li mp-pjax">
+                                    <a href="/categories/study/">&nbsp;&nbsp;&nbsp;学习</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
                                     <a href="/categories/life/">&nbsp;&nbsp;&nbsp;生活</a>
                                     <small>2</small>
                                 </li>
@@ -102,6 +111,11 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/微服务/">&nbsp;&nbsp;&nbsp;微服务</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/无聊/">&nbsp;&nbsp;&nbsp;无聊</a>
                                     <small>2</small>
                                 </li>
@@ -109,6 +123,11 @@
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/短句/">&nbsp;&nbsp;&nbsp;短句</a>
                                     <small>2</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/规范/">&nbsp;&nbsp;&nbsp;规范</a>
+                                    <small>1</small>
                                 </li>
                                 
                                 </div>
@@ -128,6 +147,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/20180121/Twelve-Factors.html">云原生应用服务的12-Factor</a>
+                
                     <a  data-pjax href="/20180118/white and black.html">白与黑</a>
                 
                     <a  data-pjax href="/20180117/noisy.html">聒噪</a>
@@ -135,12 +156,18 @@
                     <a  data-pjax href="/20180113/begin.html">从今天开始</a>
                 
                 
+                    <a data-pjax href="/categories/study/">&nbsp;&nbsp;学习</a>
+                
                     <a data-pjax href="/categories/life/">&nbsp;&nbsp;生活</a>
                 
+                
+                    <a data-pjax href="/tags/微服务/">&nbsp;&nbsp;微服务</a>
                 
                     <a data-pjax href="/tags/无聊/">&nbsp;&nbsp;无聊</a>
                 
                     <a data-pjax href="/tags/短句/">&nbsp;&nbsp;短句</a>
+                
+                    <a data-pjax href="/tags/规范/">&nbsp;&nbsp;规范</a>
                 
                 <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a>
             </div>
@@ -176,6 +203,51 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/微服务/'>微服务</a>
+                
+                <a data-pjax href='/tags/规范/'>规范</a>
+                
+                
+                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
+            </div>
+            <h1 class="post-title"><a data-pjax href="/20180121/Twelve-Factors.html">云原生应用服务的12-Factor</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2018-01-21T04:37:12.000Z"
+                      itemprop="datePublished">2018-01-21</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                其起源可以参考：http://12factor.net
+原则1：Codebase（一份代码，多份部署）
+使用代码库管理代码，一般是Git或者SVN。
+
+一份基准代码（即一个代码库）对应一个应用。如果通过一份基准代码可以编译出多个应用，那么应该考虑将该基准代码按应用拆分为多份；如果一个应用需要多份基准代码，那么要么考虑将多份基准代码合并，要么考虑将该应用按基准代码拆分为多个。
+
+不允许多个应用共享一份基准代码，如果确实需要共享，那就把需要
+                ...
+                
+
+            </p>
+            
+            <p>
+                <a data-pjax href="/20180121/Twelve-Factors.html"
+                   class="excerpt-link">Read More...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -344,6 +416,8 @@
         </div>
     </div>
 </div>
+
+
   
 <script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
@@ -369,4 +443,13 @@
 
 
 </body>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7d78b1f59a8c4777749022c20225d06d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
 </html>
