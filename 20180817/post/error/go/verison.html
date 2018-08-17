@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>分类: 学习 | 莫青留</title>
+  <title>关于http接受post请求的错误总结-go版本 | 莫青留</title>
   <meta name="description" content="jacktrane" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -218,7 +218,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#"></a></li>
+                        <li id="navbar-title"><a href="#">关于http接受post请求的错误总结-go版本</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -237,102 +237,92 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/问题/' style='color:#D5D5D5'>问题</a>
+                      
+                      <a data-pjax href='/tags/go/' style='color:#D5D5D5'>go</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">关于http接受post请求的错误总结-go版本</h1>
+                    
+                    
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2018-08-17T15:12:12.000Z"
+                              itemprop="datePublished">2018-08-17</time>
+                    </div>
+                    
 
-    
-    <article class="post">
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/问题/'>问题</a>
-                
-                <a data-pjax href='/tags/go/'>go</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
-            </h1>
+        <section class="post-content">
+            <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。</p>
+<p>旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)的字段解析到地址map中，没填content-type解析到文本map中，这样的话对于请求过来的符合标准协议的text/plain字段我就无法在文本map中找到，从而导致一堆的不可访问。</p>
+<h4 id="故事背景"><a href="#故事背景" class="headerlink" title="故事背景"></a>故事背景</h4><p>在提供一个POST请求接口给一个其他部门的同事之后,该同事使用自己的编写的程序进行提交时发现返回有问题,我打log发现他提交的数据被go解析到了文件map中,于是在大神的帮助下进行抓包研究发现该同事提交的data中的值含有postman中没有提交的content-type:text/plain,遂查了一下标准协议,发现该提交是没有问题的。<br>百思不得其解。<br>问题如下:<br></p>
+<h4 id="定位过程"><a href="#定位过程" class="headerlink" title="定位过程"></a>定位过程</h4><ol>
+<li>使用fiddler模拟请求,在服务器使用tcpdump抓包发现是一样的
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-08-17T15:12:12.000Z"
-                      itemprop="datePublished">2018-08-17</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                总结go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。
-旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)
-                ...
-                
+</li>
+</ol>
+<p>但依然出现此问题<br></p>
+<ol>
+<li>本着go版本不会有问题的思想,使用控制变量法,让程序在windows\linux\docker上build与跑,还是没有找到问题</li>
+<li>好的,那说不定是go的问题,于是控制变量法,在linux上使用1.9.7和1.10.3两个go版本上跑了一遍,发现问题通了…..
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4>目前仅发现go版本的1.10.3出现,暂时没有验证其他的,但这对于以前正式运行的项目来说是致命的。但也庆幸能够发现这个问题,要不然上线了就G了,感谢大神的帮忙。</li>
+</ol>
 
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180817/post/error/go/verison.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/微服务/'>微服务</a>
-                
-                <a data-pjax href='/tags/规范/'>规范</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-21T04:37:12.000Z"
-                      itemprop="datePublished">2018-01-21</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                其起源可以参考：http://12factor.net
-原则1：Codebase（一份代码，多份部署）
-使用代码库管理代码，一般是Git或者SVN。
-
-一份基准代码（即一个代码库）对应一个应用。如果通过一份基准代码可以编译出多个应用，那么应该考虑将该基准代码按应用拆分为多份；如果一个应用需要多份基准代码，那么要么考虑将多份基准代码合并，要么考虑将该应用按基准代码拆分为多个。
-
-不允许多个应用共享一份基准代码，如果确实需要共享，那就把需要
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180121/twelve-factors.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <nav class="pagination" role="pagination">
         
-        <span class="page-number">Page 1 of 1</span>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+                
+                <a data-pjax class="newer-posts" href="/20180203/oldcat.html">← 老猫</a>
+                
+                <!-- <a class="share-button" data-original-title title>Share this Post</a> -->
+                
+
+        </nav>
+        <br/>
+        <br/>
         
-    </nav>
+        <section id="comment">
+    <div id="comment-box"></div>
+</section>
+
+<!-- gitment -->
+
+  
+
+  <script type="text/javascript">
+    new Valine({
+      el: '#comment-box' ,
+      notify:true, 
+      verify:true, 
+      appId: 'x6jyNiRvoa6o3paWWHzys2aD-gzGzoHsz',
+      appKey: 'XlN4DtMlGEa79xn1AWnUHWbN',
+      path:window.location.pathname, 
+      avatar:'identicon' 
+  });
+  </script>
+   
+
+
+<!-- -->
+
+        
+
+
+    </article>
 </main>
 
 

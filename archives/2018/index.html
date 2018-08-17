@@ -51,6 +51,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/20180203/oldcat.html">老猫</a>
                                 </li>
                                 
@@ -63,7 +67,7 @@
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/20180121/Twelve-Factors.html">云原生应用服务的12-Factor</a>
+                                    <a href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -98,7 +102,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/study/">&nbsp;&nbsp;&nbsp;学习</a>
-                                    <small>1</small>
+                                    <small>2</small>
                                 </li>
                                 
                                 <li class="search-category-li mp-pjax">
@@ -124,6 +128,11 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/go/">&nbsp;&nbsp;&nbsp;go</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/微服务/">&nbsp;&nbsp;&nbsp;微服务</a>
                                     <small>1</small>
                                 </li>
@@ -140,6 +149,11 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/规范/">&nbsp;&nbsp;&nbsp;规范</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/问题/">&nbsp;&nbsp;&nbsp;问题</a>
                                     <small>1</small>
                                 </li>
                                 
@@ -160,13 +174,15 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+                
                     <a  data-pjax href="/20180203/oldcat.html">老猫</a>
                 
                     <a  data-pjax href="/20180130/streetlight.html">冬夜下的路灯</a>
                 
                     <a  data-pjax href="/20180122/handan.html">邯郸</a>
                 
-                    <a  data-pjax href="/20180121/Twelve-Factors.html">云原生应用服务的12-Factor</a>
+                    <a  data-pjax href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
                 
                     <a  data-pjax href="/20180118/white and black.html">白与黑</a>
                 
@@ -180,6 +196,8 @@
                     <a data-pjax href="/categories/life/">&nbsp;&nbsp;生活</a>
                 
                 
+                    <a data-pjax href="/tags/go/">&nbsp;&nbsp;go</a>
+                
                     <a data-pjax href="/tags/微服务/">&nbsp;&nbsp;微服务</a>
                 
                     <a data-pjax href="/tags/无聊/">&nbsp;&nbsp;无聊</a>
@@ -187,6 +205,8 @@
                     <a data-pjax href="/tags/短句/">&nbsp;&nbsp;短句</a>
                 
                     <a data-pjax href="/tags/规范/">&nbsp;&nbsp;规范</a>
+                
+                    <a data-pjax href="/tags/问题/">&nbsp;&nbsp;问题</a>
                 
                 <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a>
             </div>
@@ -229,9 +249,49 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/无聊/'>无聊</a>
+                <a data-pjax href='/tags/问题/'>问题</a>
+                
+                <a data-pjax href='/tags/go/'>go</a>
+                
+                
+                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
+            </div>
+            <h1 class="post-title"><a data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2018-08-17T15:12:12.000Z"
+                      itemprop="datePublished">2018-08-17</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                总结go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。
+旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)
+                ...
+                
+
+            </p>
+            
+            <p>
+                <a data-pjax href="/20180817/post/error/go/verison.html"
+                   class="excerpt-link">Read More...</a>
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
                 
                 <a data-pjax href='/tags/短句/'>短句</a>
+                
+                <a data-pjax href='/tags/无聊/'>无聊</a>
                 
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
@@ -271,9 +331,9 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
                 <a data-pjax href='/tags/短句/'>短句</a>
+                
+                <a data-pjax href='/tags/无聊/'>无聊</a>
                 
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
@@ -313,9 +373,9 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
                 <a data-pjax href='/tags/短句/'>短句</a>
+                
+                <a data-pjax href='/tags/无聊/'>无聊</a>
                 
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
@@ -364,7 +424,7 @@
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
             </div>
-            <h1 class="post-title"><a data-pjax href="/20180121/Twelve-Factors.html">云原生应用服务的12-Factor</a>
+            <h1 class="post-title"><a data-pjax href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
             </h1>
 
             <div class="post-meta">
@@ -389,7 +449,7 @@
             </p>
             
             <p>
-                <a data-pjax href="/20180121/Twelve-Factors.html"
+                <a data-pjax href="/20180121/twelve-factors.html"
                    class="excerpt-link">Read More...</a>
             </p>
             
@@ -402,9 +462,9 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
                 <a data-pjax href='/tags/短句/'>短句</a>
+                
+                <a data-pjax href='/tags/无聊/'>无聊</a>
                 
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
@@ -445,9 +505,9 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
                 <a data-pjax href='/tags/短句/'>短句</a>
+                
+                <a data-pjax href='/tags/无聊/'>无聊</a>
                 
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
