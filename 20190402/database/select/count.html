@@ -284,8 +284,17 @@
 <p>结果如下:<br><img src="/20190402/database/select/count/3.png" title="count(name)"></p>
 <h4 id="是按照虚拟字段查询"><a href="#是按照虚拟字段查询" class="headerlink" title="是按照虚拟字段查询:"></a>是按照虚拟字段查询:</h4><p>SELECT count(1) FROM test</p>
 <p>结果如下:<br><img src="/20190402/database/select/count/4.png" title="count(1)"></p>
-<h4 id="为什么会造成以上的差异呢"><a href="#为什么会造成以上的差异呢" class="headerlink" title="为什么会造成以上的差异呢?"></a>为什么会造成以上的差异呢?</h4><p>原因是:<br>count(*)其实是按每个字段读一次，对比每个字段的count，最终得出最大值6<br><img src="/20190402/database/select/count/5.png" title="count(*)"><br>count(name)则是仅读name字段下的值，此刻name中是只有4个值的，其中NULL不占空间<br><img src="/20190402/database/select/count/6.png" title="count(name)"><br>count(1)很有趣，实际上它是虚拟了一个字段，并以此此填充相应记录中的虚拟值，从而得出count(1)为6<br><img src="/20190402/database/select/count/7.png" title="count(1)"></p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>对于查单个字段总量，可以使用count(字段)<br>但很多时候我们查询一般都是查总的记录量的，在数据量少的条件下count(1)和count(*)差异性并不高，但如果数据量达到一定量级可以使用count(1)</p>
+<h4 id="为什么会造成以上的差异呢"><a href="#为什么会造成以上的差异呢" class="headerlink" title="为什么会造成以上的差异呢?"></a>为什么会造成以上的差异呢?</h4><p>原因是: </p>
+<ol>
+<li>count(*)其实是按每个字段读一次，对比每个字段的count，最终得出最大值6<img src="/20190402/database/select/count/5.png" title="count(*)"></li>
+<li>count(name)则是仅读name字段下的值，此刻name中是只有4个值的，其中NULL不占空间<img src="/20190402/database/select/count/6.png" title="count(name)"></li>
+<li>count(1)很有趣，实际上它是虚拟了一个字段，并以此此填充相应记录中的虚拟值，从而得出count(1)为6<img src="/20190402/database/select/count/7.png" title="count(1)">
+</li>
+</ol>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ol>
+<li>对于查单个字段总量，可以使用count(字段)</li>
+<li>但很多时候我们查询一般都是查总的记录量的，在数据量少的条件下count(1)和count(*)差异性并不高，但如果数据量达到一定量级可以使用count(1)</li>
+</ol>
 
         </section>
         
