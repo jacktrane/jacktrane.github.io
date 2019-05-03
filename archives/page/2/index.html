@@ -287,219 +287,6 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/数据库/'>数据库</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20190503/database/bigtable/field.html">大表如何加字段？</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2019-05-03T13:03:56.000Z"
-                      itemprop="datePublished">2019-05-03</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                mysql 5.5之前 表插入字段的其实很奇妙，在表添加索引修改列等操作时，竟然会锁表，这样在大表中添加列或添加索引就是灾难级的了，直接堵塞了所有操作。那么解决这种方式要怎么做？
-
-首先新建Temp table，表结构是 ALTAR TABLE 新定义的结构
-然后把原表中数据导入到这个Temp table（最好是将原表加上读锁，别让数据进来，避免数据不一致；或者是在原表加一个触发器，让在导入过程中原表的写入操作也同步到新表中）
-删除原表
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20190503/database/bigtable/field.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/数据库/'>数据库</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20190503/database/data/move.html">mysql数据迁移怎么做？（仅30万+数据而已）</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2019-05-03T12:46:22.000Z"
-                      itemprop="datePublished">2019-05-03</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                最近在做一个数据库迁移，把做了的东西mark以下。
-
-发现不管是大数据量还是小数据量，其实流程大致遵循上面的流程其实就差不多了，只不过在大数据量下可能2和3要做一次脚本才行。
-1. 锁表如果贵项目是允许数据错误的话其实锁不锁都可以，不过最好在迁移数据的时候加上个只读锁，防止数据错乱。（另外千万不要断开连接，如果断开连接则表锁自然释放）123456// 全局加只读锁（软件上的所有库表）FLUSH TABLES WITH READ LOCK
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20190503/database/data/move.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/有趣的小东西/'>有趣的小东西</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20190503/vim/cipher.html">有趣的VIM加密操作</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2019-05-03T12:24:24.000Z"
-                      itemprop="datePublished">2019-05-03</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                
-创建一个文件前，使用 -x选项即可vim -x [文件]
-
-已有文件，在文件中执行:X
-
-
- 值得注意的是：在输入密码错误的情况下，它仅仅只能将你已经输入的字符乱码，但是也还是可以被删除和修改的。
-参考自：怎样在Linux中用Vim对文件进行密码保护
-
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20190503/vim/cipher.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/数据库/'>数据库</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20190402/database/select/count.html">简单聊一下表Select count</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2019-04-01T16:32:19.000Z"
-                      itemprop="datePublished">2019-04-02</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                数据如图:
-按照*方式查找 :SELECT count(*) FROM test
-结果如下:
-按照指定字段查询 :SELECT count(name) FROM test
-结果如下:
-是按照虚拟字段查询:SELECT count(1) FROM test
-结果如下:
-为什么会造成以上的差异呢?原因是: 
-
-count(*)其实是按每个字段读一次，对比每个字段的count，最终得出最大值6
-count(name)则是仅读name字段下的值
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20190402/database/select/count.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/问题/'>问题</a>
-                
-                <a data-pjax href='/tags/go/'>go</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-08-17T15:12:12.000Z"
-                      itemprop="datePublished">2018-08-17</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                总结go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。
-旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180817/post/error/go/verison.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
                 <a data-pjax href='/tags/短句/'>短句</a>
                 
                 <a data-pjax href='/tags/无聊/'>无聊</a>
@@ -507,21 +294,30 @@ count(name)则是仅读name字段下的值
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
             </div>
-            <h1 class="post-title"><a data-pjax href="/20180203/oldcat.html">老猫</a>
+            <h1 class="post-title"><a data-pjax href="/20180117/noisy.html">聒噪</a>
             </h1>
 
             <div class="post-meta">
                 Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-02-03T10:59:42.000Z"
-                      itemprop="datePublished">2018-02-03</time>
+                <time datetime="2018-01-17T15:43:48.000Z"
+                      itemprop="datePublished">2018-01-17</time>
             </div>
         </header>
         <section class="post-excerpt">
             <p>
                 
-                那天阳光正好栅栏上的那滩死水浸满着光明的恩施
-缠绕着的飞蝇形成的圈化作一件乌冠为老猫加冕
-老猫蜷缩着的身躯变成栅栏上的那滩死水
+                远处有人开着音响，喊着麦，开着见不得人的演唱会。
+楼下摊子哐当哐当炒着菜。
+左栋楼开着风筒呼啦啦发着机械声音。
+楼上有人移动着木制载体，突突地敲打的天花板。
+右边关门声嘭地一声撞击门沿。
+又传来哗哗的铁器摩擦的声音。
+喇叭哔哔的声音。
+石头落地的声音。
+流水声。
+风声。
+还有我这键盘敲击的铛铛声。
+声声入耳，夜尽难眠。
 
                 ...
                 
@@ -529,7 +325,7 @@ count(name)则是仅读name字段下的值
             </p>
             
             <p>
-                <a data-pjax href="/20180203/oldcat.html"
+                <a data-pjax href="/20180117/noisy.html"
                    class="excerpt-link">Read More...</a>
             </p>
             
@@ -541,169 +337,31 @@ count(name)则是仅读name字段下的值
         <header class="post-header">
             <div class="tag-tile">
                 
-                
-                <a data-pjax href='/tags/短句/'>短句</a>
-                
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
-                
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
             </div>
-            <h1 class="post-title"><a data-pjax href="/20180130/streetlight.html">冬夜下的路灯</a>
+            <h1 class="post-title"><a data-pjax href="/20180113/begin.html">从今天开始</a>
             </h1>
 
             <div class="post-meta">
                 Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-30T14:27:38.000Z"
-                      itemprop="datePublished">2018-01-30</time>
+                <time datetime="2018-01-13T08:51:47.000Z"
+                      itemprop="datePublished">2018-01-13</time>
             </div>
         </header>
         <section class="post-excerpt">
             <p>
                 
-                灯在冬夜中燃起了火温暖留住了我停驻在光斑下看漫天的雪花悄悄落下落下
-火在黑色下筑起了牢白色是它的栏寒冷拦住了我自然  是疯狂的艺术家我是他的冰雕跪倒在匆忙的人潮中微微蜷起蜷起
-自然  是尊贵的君王我是他的侍臣仆伏于他的脚下化作永生
-
+                从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人终成眷属愿你在尘世获得幸福我也愿面朝大海，春暖花开
+《从明天起》海子
+2018年第二周的周六，个人的博客大致搭建完成。
+立志对于立志这回事，王阳明先生说的很对，“志不立，天下无可
                 ...
                 
 
             </p>
             
             <p>
-                <a data-pjax href="/20180130/streetlight.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/短句/'>短句</a>
-                
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180122/handan.html">邯郸</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-22T15:15:40.000Z"
-                      itemprop="datePublished">2018-01-22</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                尝试着尝试着站起来对天空喊叫开始剪掉毛发穿上裙子
-凿开了沙丘学着墙外的建筑建起了穴洞
-张望着树上鸟掠过的痕迹抓起树枝穿插着麻袋随风飘动
-枕着河床随流水摇晃鱼儿在身上搁浅跳动
-它叫邯郸我也叫邯郸
-
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180122/handan.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/微服务/'>微服务</a>
-                
-                <a data-pjax href='/tags/规范/'>规范</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-21T04:37:12.000Z"
-                      itemprop="datePublished">2018-01-21</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                其起源可以参考：http://12factor.net
-原则1：Codebase（一份代码，多份部署）
-使用代码库管理代码，一般是Git或者SVN。
-
-一份基准代码（即一个代码库）对应一个应用。如果通过一份基准代码可以编译出多个应用，那么应该考虑将该基准代码按应用拆分为多份；如果一个应用需要多份基准代码，那么要么考虑将多份基准代码合并，要么考虑将该应用按基准代码拆分为多个。
-
-不允许多个应用共享一份基准代码，如果确实需要共享，那就把需要
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180121/twelve-factors.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/短句/'>短句</a>
-                
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180118/white and black.html">白与黑</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-18T15:47:23.000Z"
-                      itemprop="datePublished">2018-01-18</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                白色高举着道德的旗帜
-将黑色按倒在律法的天平上
-施以了强奸
-淌出灰色的液体
-
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180118/white and black.html"
+                <a data-pjax href="/20180113/begin.html"
                    class="excerpt-link">Read More...</a>
             </p>
             
@@ -712,9 +370,9 @@ count(name)则是仅读name字段下的值
     
     <nav class="pagination" role="pagination">
         
-        <span class="page-number">Page 1 of 2</span>
+        <a data-pjax class="newer-posts" href="/archives/">← Newer Posts</a>
         
-        <a data-pjax class="older-posts" href="/archives/page/2/">Older Posts →</a>
+        <span class="page-number">Page 2 of 2</span>
         
     </nav>
 </main>

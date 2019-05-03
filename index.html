@@ -51,6 +51,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/20190503/database/bigtable/field.html">大表如何加字段？</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20190503/database/data/move.html">mysql数据迁移怎么做？（仅30万+数据而已）</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/20190503/vim/cipher.html">有趣的VIM加密操作</a>
                                 </li>
                                 
@@ -110,7 +118,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/study/">&nbsp;&nbsp;&nbsp;学习</a>
-                                    <small>4</small>
+                                    <small>6</small>
                                 </li>
                                 
                                 <li class="search-category-li mp-pjax">
@@ -147,7 +155,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/数据库/">&nbsp;&nbsp;&nbsp;数据库</a>
-                                    <small>1</small>
+                                    <small>3</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -191,6 +199,10 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/20190503/database/bigtable/field.html">大表如何加字段？</a>
+                
+                    <a  data-pjax href="/20190503/database/data/move.html">mysql数据迁移怎么做？（仅30万+数据而已）</a>
                 
                     <a  data-pjax href="/20190503/vim/cipher.html">有趣的VIM加密操作</a>
                 
@@ -268,6 +280,87 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/数据库/'>数据库</a>
+                
+                
+                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
+            </div>
+            <h1 class="post-title"><a data-pjax href="/20190503/database/bigtable/field.html">大表如何加字段？</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2019-05-03T13:03:56.000Z"
+                      itemprop="datePublished">2019-05-03</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                mysql 5.5之前 表插入字段的其实很奇妙，在表添加索引修改列等操作时，竟然会锁表，这样在大表中添加列或添加索引就是灾难级的了，直接堵塞了所有操作。那么解决这种方式要怎么做？
+
+首先新建Temp table，表结构是 ALTAR TABLE 新定义的结构
+然后把原表中数据导入到这个Temp table（最好是将原表加上读锁，别让数据进来，避免数据不一致；或者是在原表加一个触发器，让在导入过程中原表的写入操作也同步到新表中）
+删除原表
+                ...
+                
+
+            </p>
+            
+            <p>
+                <a data-pjax href="/20190503/database/bigtable/field.html"
+                   class="excerpt-link">Read More...</a>
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/数据库/'>数据库</a>
+                
+                
+                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
+            </div>
+            <h1 class="post-title"><a data-pjax href="/20190503/database/data/move.html">mysql数据迁移怎么做？（仅30万+数据而已）</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2019-05-03T12:46:22.000Z"
+                      itemprop="datePublished">2019-05-03</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                最近在做一个数据库迁移，把做了的东西mark以下。
+
+发现不管是大数据量还是小数据量，其实流程大致遵循上面的流程其实就差不多了，只不过在大数据量下可能2和3要做一次脚本才行。
+1. 锁表如果贵项目是允许数据错误的话其实锁不锁都可以，不过最好在迁移数据的时候加上个只读锁，防止数据错乱。（另外千万不要断开连接，如果断开连接则表锁自然释放）123456// 全局加只读锁（软件上的所有库表）FLUSH TABLES WITH READ LOCK
+                ...
+                
+
+            </p>
+            
+            <p>
+                <a data-pjax href="/20190503/database/data/move.html"
+                   class="excerpt-link">Read More...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -617,96 +710,11 @@ count(name)则是仅读name字段下的值
         </section>
     </article>
     
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/短句/'>短句</a>
-                
-                <a data-pjax href='/tags/无聊/'>无聊</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180117/noisy.html">聒噪</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-17T15:43:48.000Z"
-                      itemprop="datePublished">2018-01-17</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                远处有人开着音响，喊着麦，开着见不得人的演唱会。
-楼下摊子哐当哐当炒着菜。
-左栋楼开着风筒呼啦啦发着机械声音。
-楼上有人移动着木制载体，突突地敲打的天花板。
-右边关门声嘭地一声撞击门沿。
-又传来哗哗的铁器摩擦的声音。
-喇叭哔哔的声音。
-石头落地的声音。
-流水声。
-风声。
-还有我这键盘敲击的铛铛声。
-声声入耳，夜尽难眠。
-
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180117/noisy.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180113/begin.html">从今天开始</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-01-13T08:51:47.000Z"
-                      itemprop="datePublished">2018-01-13</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人终成眷属愿你在尘世获得幸福我也愿面朝大海，春暖花开
-《从明天起》海子
-2018年第二周的周六，个人的博客大致搭建完成。
-立志对于立志这回事，王阳明先生说的很对，“志不立，天下无可
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180113/begin.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
-        </section>
-    </article>
-    
     <nav class="pagination" role="pagination">
         
-        <span class="page-number">Page 1 of 1</span>
+        <span class="page-number">Page 1 of 2</span>
+        
+        <a data-pjax class="older-posts" href="/page/2/">Older Posts →</a>
         
     </nav>
 </main>
