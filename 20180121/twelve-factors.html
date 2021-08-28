@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>云原生应用服务的12-Factor | 莫青留</title>
+  <meta name="description" content="jacktrane" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/favicon.ico">
+<!--  
+  <link rel="stylesheet" type="text/css" href="http://obbbw3q31.bkt.clouddn.com/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="http://obbbw3q31.bkt.clouddn.com/css/screen.css" />
+-->
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="莫青留">
+  <!-- <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> --> 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//blog-1252168869.cos.ap-chengdu.myqcloud.com/js/Valine.min.js'></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+  
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20210825/database/cassandra/simple.html">Cassandra的简单理解</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20200204/computer/mode/endian.html">浅谈大端模式和小端模式</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20190503/database/bigtable/field.html">大表如何加字段？</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20190503/database/data/move.html">mysql数据迁移怎么做？（仅30万+数据而已）</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20190503/vim/cipher.html">有趣的VIM加密操作</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20190402/database/select/count.html">简单聊一下表Select count</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180203/oldcat.html">老猫</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180130/streetlight.html">冬夜下的路灯</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180122/handan.html">邯郸</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180118/white and black.html">白与黑</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180117/noisy.html">聒噪</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20180113/begin.html">从今天开始</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/study/">&nbsp;&nbsp;&nbsp;学习</a>
+                                    <small>8</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/life/">&nbsp;&nbsp;&nbsp;生活</a>
+                                    <small>5</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/go/">&nbsp;&nbsp;&nbsp;go</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/微服务/">&nbsp;&nbsp;&nbsp;微服务</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/数据库/">&nbsp;&nbsp;&nbsp;数据库</a>
+                                    <small>4</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/无聊/">&nbsp;&nbsp;&nbsp;无聊</a>
+                                    <small>5</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/有趣的小东西/">&nbsp;&nbsp;&nbsp;有趣的小东西</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/短句/">&nbsp;&nbsp;&nbsp;短句</a>
+                                    <small>5</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/规范/">&nbsp;&nbsp;&nbsp;规范</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/计算机/">&nbsp;&nbsp;&nbsp;计算机</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/问题/">&nbsp;&nbsp;&nbsp;问题</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a></li>
+                    
+                        <li><a class="fa fa-github" href="https://github.com/jacktrane " target=_blank>&nbsp;&nbsp;&nbsp;Github</a></li>
+                    
+                    
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/20210825/database/cassandra/simple.html">Cassandra的简单理解</a>
+                
+                    <a  data-pjax href="/20200204/computer/mode/endian.html">浅谈大端模式和小端模式</a>
+                
+                    <a  data-pjax href="/20190503/database/bigtable/field.html">大表如何加字段？</a>
+                
+                    <a  data-pjax href="/20190503/database/data/move.html">mysql数据迁移怎么做？（仅30万+数据而已）</a>
+                
+                    <a  data-pjax href="/20190503/vim/cipher.html">有趣的VIM加密操作</a>
+                
+                    <a  data-pjax href="/20190402/database/select/count.html">简单聊一下表Select count</a>
+                
+                    <a  data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+                
+                    <a  data-pjax href="/20180203/oldcat.html">老猫</a>
+                
+                    <a  data-pjax href="/20180130/streetlight.html">冬夜下的路灯</a>
+                
+                    <a  data-pjax href="/20180122/handan.html">邯郸</a>
+                
+                    <a  data-pjax href="/20180121/twelve-factors.html">云原生应用服务的12-Factor</a>
+                
+                    <a  data-pjax href="/20180118/white and black.html">白与黑</a>
+                
+                    <a  data-pjax href="/20180117/noisy.html">聒噪</a>
+                
+                    <a  data-pjax href="/20180113/begin.html">从今天开始</a>
+                
+                
+                    <a data-pjax href="/categories/study/">&nbsp;&nbsp;学习</a>
+                
+                    <a data-pjax href="/categories/life/">&nbsp;&nbsp;生活</a>
+                
+                
+                    <a data-pjax href="/tags/go/">&nbsp;&nbsp;go</a>
+                
+                    <a data-pjax href="/tags/微服务/">&nbsp;&nbsp;微服务</a>
+                
+                    <a data-pjax href="/tags/数据库/">&nbsp;&nbsp;数据库</a>
+                
+                    <a data-pjax href="/tags/无聊/">&nbsp;&nbsp;无聊</a>
+                
+                    <a data-pjax href="/tags/有趣的小东西/">&nbsp;&nbsp;有趣的小东西</a>
+                
+                    <a data-pjax href="/tags/短句/">&nbsp;&nbsp;短句</a>
+                
+                    <a data-pjax href="/tags/规范/">&nbsp;&nbsp;规范</a>
+                
+                    <a data-pjax href="/tags/计算机/">&nbsp;&nbsp;计算机</a>
+                
+                    <a data-pjax href="/tags/问题/">&nbsp;&nbsp;问题</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">莫青留</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">云原生应用服务的12-Factor</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/微服务/' style='color:#D5D5D5'>微服务</a>
+                      
+                      <a data-pjax href='/tags/规范/' style='color:#D5D5D5'>规范</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">云原生应用服务的12-Factor</h1>
+                    
+                    
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2018-01-21T04:37:12.000Z"
+                              itemprop="datePublished">2018-01-21</time>
+                    </div>
+                    
+
+    </span>
+
+        <section class="post-content">
+            <p>其起源可以参考：<a href="http://12factor.net" target="_blank" rel="noopener">http://12factor.net</a></p>
+<h2 id="原则1：Codebase（一份代码，多份部署）"><a href="#原则1：Codebase（一份代码，多份部署）" class="headerlink" title="原则1：Codebase（一份代码，多份部署）"></a>原则1：Codebase（一份代码，多份部署）</h2><ol>
+<li><p>使用代码库管理代码，一般是Git或者SVN。</p>
+</li>
+<li><p>一份基准代码（即一个代码库）对应一个应用。如果通过一份基准代码可以编译出多个应用，那么应该考虑将该基准代码按应用拆分为多份；如果一个应用需要多份基准代码，那么要么考虑将多份基准代码合并，要么考虑将该应用按基准代码拆分为多个。</p>
+</li>
+<li><p>不允许多个应用共享一份基准代码，如果确实需要共享，那就把需要共享的基准代码的稳定版本发布为类库，然后通过依赖管理策略进行加载。</p>
+</li>
+</ol>
+<p><strong>原因：</strong></p>
+<ol>
+<li><p>如果一份基准代码可以编译出多个应用，那么这几个应用之间必然会存在不清晰的依赖关系，随着时间的推移，这种依赖关系会变得愈加混乱，以至于修改一个应用的代码，会给其他应用带来不可预知的影响。这样的基准代码显然极难维护。</p>
+</li>
+<li><p>基准代码的划分和应用的划分非常类似，也是系统边界的一种体现，如果一个应用需要从多份基准代码编译，那么多数情况下这个应用的内外部边界问题会存在问题。如果边界不存在问题，那么请将多份基准代码合并为一份，而不是维持这种古怪的设计。</p>
+</li>
+<li><p>如果多个应用不是通过类库，而是直接共享一份基准代码，那么这份被共享的基准代码会很难维护，对这份基准代码的修改必须谨慎考虑对多个应用可能造成的影响。正确的方式是将这份基准代码发布为类库，保持清晰的边界和接口约定供其它应用调用。</p>
+</li>
+</ol>
+<h2 id="原则2：Dependency（显式声明依赖）"><a href="#原则2：Dependency（显式声明依赖）" class="headerlink" title="原则2：Dependency（显式声明依赖）"></a>原则2：Dependency（显式声明依赖）</h2><p>这里的依赖指所有的依赖，包括应用程序本身的类库和操作系统层面被应用程序所使用的库文件或者其他二进制文件，都必须进行显示声明，并对版本做出明确的指定。不要假定运行环境中已经存在应用所需要的任何依赖项，而是应该假定什么都没有（即使有也很可能不是应用所需要的版本）。如果使用容器方式进行部署，容器的基础镜像很可能是Busybox或者Alpine之类的迷你Linux，那么就几乎等于什么都没有。如果使用微服务模式，理想情况下，微服务之间的依赖关系也应该进行显示声明。</p>
+<p>以前我们往往不会对依赖做如此严格的管理，因为应用不会有太大规模的部署，也不会进行频繁的发布，如果发现运行环境里缺少某些依赖，那么就临时手工处理一下，也不是什么太大的问题。如今在微服务模式下，应用的部署规模大、发布频率高，如果这个时候还是使用原有的模式，则会带来混乱。</p>
+<p>声明依赖的方式有很多，常见的方式是使用依赖清单，根据依赖清单进行依赖检查，同时使用依赖隔离工具保证应用不会调用系统中存在但是依赖清单中未声明的依赖项；另一种方式是使用容器技术，将应用和依赖打包为容器镜像，依赖的声明和隔离就一并解决了。</p>
+<h2 id="原则3：Config（配置代码分离）"><a href="#原则3：Config（配置代码分离）" class="headerlink" title="原则3：Config（配置代码分离）"></a>原则3：Config（配置代码分离）</h2><p>这里的配置指的是：</p>
+<ul>
+<li>数据库、消息代理、缓存等后端的连接配置</li>
+<li>第三方服务的证书</li>
+<li>每份部署独有的配置</li>
+</ul>
+<p>之所以这样做有几个原因：</p>
+<ol>
+<li>简化操作，因为变量的设定问题就可以直接在配置上修改，不要影响到代码的修改</li>
+<li>安全，将数据库等连接配置分离，可以避免敏感信息的可能性泄露</li>
+</ol>
+<p>方式：</p>
+<ol>
+<li>可以在相关的环境中存储配置</li>
+<li>利用配置服务进行存储配置（Spring Cloud Config Server）</li>
+</ol>
+<h2 id="原则4：Backing-Services（后端服务作为附加资源）"><a href="#原则4：Backing-Services（后端服务作为附加资源）" class="headerlink" title="原则4：Backing Services（后端服务作为附加资源）"></a>原则4：Backing Services（后端服务作为附加资源）</h2><p>后端服务指的是应用运行所依赖的各种服务，例如数据库、消息代理、缓存系统等，对于云原生应用来说，往往还会有日志收集服务、对象存储服务、以及各种通过API访问的服务；当作附加资源指的是把这些服务作为外部的、通过网络调用的资源。</p>
+<h2 id="原则5：Build，release，run（严格分离构建、发布、运行）"><a href="#原则5：Build，release，run（严格分离构建、发布、运行）" class="headerlink" title="原则5：Build，release，run（严格分离构建、发布、运行）"></a>原则5：Build，release，run（严格分离构建、发布、运行）</h2><ul>
+<li>构建指的是将应用代码转化为执行体的过程：构建时会拉取特定版本的代码和依赖项，将其编译为二进制文件（针对编译型语言），并和资源文件一起打包。</li>
+<li>发布指的是将构建的结果和部署所需的配置相结合，并将其放置于运行环境之中。</li>
+<li>运行指的是将发布的结果启动为运行环境中的一个或多个进程</li>
+</ul>
+<p>这里需要注意的是：在运行阶段的代码严格不能修改，以防止其变成孤本</p>
+<h2 id="原则6：Process（以一个或多个无状态进程运行应用）"><a href="#原则6：Process（以一个或多个无状态进程运行应用）" class="headerlink" title="原则6：Process（以一个或多个无状态进程运行应用）"></a>原则6：Process（以一个或多个无状态进程运行应用）</h2><p>本原则要求应用进程的内部不要保存状态信息，任何状态信息都应该被保存在数据库、缓存系统等外部服务中。应用实例之间的数据共享也要通过数据库和缓存系统等外部服务进行，直接的数据共享不但违反无状态原则，还引入了串行化的单点，这会为应用的横向扩展带来障碍。在微服务模式下，应用不应该在自身进程内部缓存数据以供将来的请求使用，因为微服务模式以多实例方式运行应用，将来的请求多半会被路由到其他实例，此时虽然可以使用粘滞会话将请求保持在同一个实例上，但是无论是云原生应用还是微服务模式都极力反对使用粘滞会话，原因如下：</p>
+<ol>
+<li>很难对粘滞会话实现负载均衡，因为粘滞会话的均衡性不仅决定于负载均衡策略，还和会话本身的行为相关，例如，可能存在应用某些实例上的会话已经大量退出，而另一些实例上的会话依然处于活动状态，此时这两部分实例的负载处于不均衡状态，而负载均衡器无法将活动会话转移到空闲的应用实例。</li>
+<li>启动新的应用实例不会立即提高应用的整体处理能力，因为这些新实例只能承接新会话，旧的会话依旧粘滞在旧的应用实例上。</li>
+<li>应用实例退出会导致会话丢失，所以在实例发生故障时，即使云平台可以对故障实例进行自动替换，也会导致用户数据丢失。即使是对应用实例进行人工维护，也需要在维护之前对该实例上的会话进行转移，这往往意味着需要编写复杂的业务代码。在传统模式下，可以通过在双机之间进行会话复制来实现对用户无感知的单机下线维护（虽然会付出处理能力减半的代价），但是在微服务模式下，应用的实例数量往往远不止两个，在大量的实例之间进行会话复制会使实例之间原本非常简单的逻辑关系复杂化，此时将无法通过云平台对其进行无差别的自动化维护。另外，在实例之间进行会话复制也意味着实例之间存在着直接的数据共享，这会为应用的横向扩展带来障碍。</li>
+</ol>
+<p>所以，粘滞会话是应用实现可用性和扩展性的重要障碍，使用粘滞会话显然是种得不偿失的选择。更好的实现方式是将会话信息存储在缓存服务中。</p>
+<h2 id="原则7：Port-binding（通过端口绑定提供服务）"><a href="#原则7：Port-binding（通过端口绑定提供服务）" class="headerlink" title="原则7：Port binding（通过端口绑定提供服务）"></a>原则7：Port binding（通过端口绑定提供服务）</h2><p>服务端应用通过网络端口提供服务，这点毋庸置疑，但是本原则还有如下两个深层次的含义：</p>
+<ol>
+<li><p>无论是云原生应用还是微服务模式都要求应用应该完全自我包含，而不是依赖于外部的应用服务器，端口绑定指的是应用直接与端口绑定，而不是通过应用服务器进行端口绑定。如果一定要使用应用服务器，那就使用嵌入式应用服务器，无论是云原生应用还是微服务模式都极力反对将多个应用放置于同一个应用服务器上运行，因为在这种模式下，一个应用出错会对同一个应用服务器上的其他应用造成影响，也无法针对单一应用做横向扩展。</p>
+</li>
+<li><p>端口绑定工作应该由云平台自动进行，云平台在实现应用到端口的绑定之外，还需要实现内部端口到外部端口的映射和外部端口到域名的映射。在应用的整个生命周期内，应用实例会经历多次的重新部署、重启或者横向扩展，端口会发生变化，但URL会保持不变。</p>
+</li>
+</ol>
+<h2 id="原则8：Concurrency（利用进程模型进行横向扩展）"><a href="#原则8：Concurrency（利用进程模型进行横向扩展）" class="headerlink" title="原则8：Concurrency（利用进程模型进行横向扩展）"></a>原则8：Concurrency（利用进程模型进行横向扩展）</h2><p>与通过进程模型进行扩展相反的方式是通过线程模型进行扩展，这是一种相对较为传统的方式，典型的例子是Java应用。当我们启动一个Java进程的时候，通常会通过JVM参数为其设置各个内存区域的容量上下限，同时还可能会在应用层面为其设置一个或者多个线程池的容量上下限，当外部负载变化时，进程所占用的内存容量和进程内部的线程数量可以在这些预先设置好的上下限之间进行扩展，这种方式也被称为纵向扩展或者垂直扩展。</p>
+<p>但是这种方式存在一些问题，首先，在进程的内存容量和线程数量提高时，应用的某些性能指标可能不会得到同步提高，甚至可能会下降（这往往是因为程序对某些无法扩展的资源进行争用所造成的），这种参差不齐的性能扩展对外部负载提高的承接能力会很不理想，有时甚至会适得其反；其次，为了使进程本身可以完成纵向扩展，还需要在虚拟机层面或者容器层面为其预留内存资源和对应的CPU资源，这会造成大量的资源浪费（当然，也可以使虚拟机或者容器跟随进程一起进行纵向扩展，这在技术上是可行的，但是会为虚拟机或者容器管理平台的资源调度造成一些不必要的困难，例如频繁的虚拟机迁移或者容器重启）。</p>
+<p>所以，现在更为推崇使用“固定的”进程（对前面Java应用的例子来说，就是固定的内存容量和线程池容量），在外部负载提高时，启动更多的进程，在外部负载降低时，停止一部分进程，这种方式就是本原则所说的通过进程模型进行扩展，有时候也被称为横向扩展或者水平扩展。这种扩展方式的好处是，在进程数量增加的时候，应用的各种性能指标会得到同步的提高，这种提高即使不是线性的，也会按照一种平滑和可预期的曲线展开，可以更为稳定的应对外部负载的变化。</p>
+<p>云原生应用和微服务模式极力推崇将通过进程模型进行扩展作为唯一的扩展方式，除了前文所述，还有一个原因是进程是云平台可以操作的最小运行单元（当然，可以通过其他技术手段去操作线程，但是那不会成为云平台的通用技术特性），云平台可以根据各个层面的监控数据，通过预设规则决定是否为应用增加或者减少进程，例如，当前端的负载均衡器检测到访问某个后端应用的并发用户数超过某个阈值时，可以立即为这个后端应用启动更多的进程，以承接更大的负载，同时还可以选择是否对该应用后端的数据库进行扩展。</p>
+<p>如果此时选择对应用进行纵向扩展，则云平台既不知道应用处理能力的变化，也无法对这种变化进行预期管理，更无法使应用的前后端对这种变化进行联动，即该应用的扩展行为脱离了云平台的管理。在微服务模式下，如果大量的进程都采用纵向扩展方式，则会为平台的资源调度带来极大的混乱。</p>
+<h2 id="原则9：Disposability（快速启动和优雅终止健全性）"><a href="#原则9：Disposability（快速启动和优雅终止健全性）" class="headerlink" title="原则9：Disposability（快速启动和优雅终止健全性）"></a>原则9：Disposability（快速启动和优雅终止健全性）</h2><p>该原则要求应用可以瞬间（理想情况下是数秒或者更短）启动和停止，因为这将有利于应用快速进行横向扩展和变更或者故障后的重新部署，而这两者都是程序健壮性的体现。</p>
+<p>为了保证应用可以在数秒内完成启动，还需要大量的优化工作，需要开发人员掌握复杂的调优技术与工具，有些工作必须在应用的初始设计阶段完成，例如：如果应用体积过大或者是引用了太多的库文件，那么再多的后期优化也无法将启动时间降低到数秒以内。</p>
+<p>在“原则5：严格分离构建、发布和运行”中我们还提到，应用的运行步骤应该非常简单，这里的“简单”也隐含着快速的意思，目的是为了在硬件重启、实例故障和横向扩展等情况下，应用可以快速的实现重启。除此之外，“原则6：以一个或多个无状态的进程运行应用”也与应用的快速启动有关，遵守无状态原则，使用云平台提供的缓存服务，而不是在应用内部加载缓存，可以避免在应用启动期间进行耗时的缓存预热。</p>
+<p>比起应用的快速启动，优雅终止（Graceful Shutdown）需要考虑的问题会更为广泛一些。优雅终止需要尽可能降低应用终止对用户造成的不良影响（对于微服务应用，用户可能是人，也可能是其他微服务），对于短任务来说，这一般意味着拒绝所有新的请求，并将已经接收的请求处理完毕后再终止；对于长任务来说，这一般意味着应用重启后的客户端重连和为任务设置断点并在重启后继续执行。除此之外，优雅终止还需要释放所有被进程锁定的资源，并对事务的完整性和操作的幂等性做出完备的考虑。</p>
+<p>最后，应用还必须应对突如其来的退出，在硬件出现故障时或者进程崩溃时，应用需要保证不会对其使用的数据造成损坏，遵守无状态原则、将数据交由后端服务处理的应用可以很容易的将应对突然退出的复杂度外部化。</p>
+<h2 id="原则10：Dev-prod-parity（尽可能保持开发、测试、线上环境等价）"><a href="#原则10：Dev-prod-parity（尽可能保持开发、测试、线上环境等价）" class="headerlink" title="原则10：Dev/prod parity（尽可能保持开发、测试、线上环境等价）"></a>原则10：Dev/prod parity（尽可能保持开发、测试、线上环境等价）</h2><p>对于开发来说，最大的尴尬估计就是：It works on my machine.</p>
+<p>我们所能做到的尽量缩小开发环境和线上环境中时间和人员的差异。开发环境中的代码每天都在更新，而这些更新往往会累积数周甚至数月才会被发布到线上环境，这是开发环境和线上环境在时间上的巨大差异；开发人员只关心开发环境，运维人员只关心线上环境，开发人员和运维人员在工作上鲜有交集，这是开发环境和线上环境在人员上的巨大差异。对于前一个差异，本原则要求更为密集和频繁的向线上环境发布更新，要求建立机制以保障开发人员可以在数小时甚至数分钟内既可将更新发布到线上，这也正是本章理念部分中持续交付所提倡的；对于后一个差异，本原则要求开发人员不能只关心开发环境中自己的代码，更要密切关注代码的部署过程和代码在线上的运行情况，这也正是DevOps所提倡的。</p>
+<h2 id="原则11：Logs（日志当作事件流）"><a href="#原则11：Logs（日志当作事件流）" class="headerlink" title="原则11：Logs（日志当作事件流）"></a>原则11：Logs（日志当作事件流）</h2><p>应用程序应该将其产生的事件以每个事件一行的格式按时间顺序输出，这点毋庸置疑，但是本原则想说的其实是：应用程序不要自行管理日志文件。</p>
+<p>以前我们习惯将应用程序产生的事件分门别类的输出到不同的日志文件，并为每个日志文件指定在本地文件系统上的存储位置，为了避免单一日志文件过大，还会为它们配置轮转策略。该原则极力反对上述做法，而是要求应用程序将日志以事件流的方式输出到标准输出STDOUT和标准错误输出STDERR，然后由运行环境捕获这些事件流，并转发到专门的日志处理服务进行处理。这样做的原因是：</p>
+<ol>
+<li>“原则6：以一个或多个无状态的进程运行应用”要求应用程序无状态，那么应用程序就不应该将日志文件这种价值信息存储在本地文件系统上。当然，可以在本地运行一个日志收集进程读取日志文件，并将其转发到专门的日志处理服务，以保证价值信息不被意外丢弃，但是这带来了如下问题：</li>
+</ol>
+<ul>
+<li><p>需要提供一种机制以保证日志收集进程可靠运行。</p>
+</li>
+<li><p>需要通过配置文件告知日志收集进程去哪里读取日志文件。</p>
+</li>
+<li><p>需要在应用程序所在的虚拟机或者容器上为日志收集进程开放一个网络端口以供其发送日志内容，这不仅增加了网络的复杂度，还给网络安全带来了隐患。</p>
+</li>
+</ul>
+<p>由此可见，直接将日志输出到STDOUT和STDERR并由运行环境对其进行捕获远比这种方案来的简洁和可靠。</p>
+<ol start="2">
+<li><p>在存在专门的日志处理服务时，由应用程序自行对日志进行分类显得死板和毫无必要；只需将日志以事件流方式发送给日志处理服务，日志处理服务可以对这些日志按不同视角进行灵活的分类，而不是受限于一种既定的分类规则。</p>
+</li>
+<li><p>“原则6：以一个或多个无状态的进程运行应用”中还提到“微服务模式以多实例方式运行应用，将来的请求多半会被路由到其他实例”，所以单个应用实例的日志无法描述完整的业务操作，不具备业务层面的价值。必须将应用所有实例的日志汇总到日志处理服务，由日志处理服务按特定规则（如按用户ID或者对象ID）对其进行聚合，才能完整展现应用在业务层面的操作过程。应用在以多实例方式运行时，应用的单个实例可能会因为软硬件故障而重启，或者被横向扩展机制创建和销毁，所以必须将应用所有实例的日志汇总，才能完整的描述应用的运行情况。</p>
+</li>
+</ol>
+<h2 id="原则12：Admin-processes（后台管理任务当作一次性进程运行）"><a href="#原则12：Admin-processes（后台管理任务当作一次性进程运行）" class="headerlink" title="原则12：Admin processes（后台管理任务当作一次性进程运行）"></a>原则12：Admin processes（后台管理任务当作一次性进程运行）</h2><p>通过SSH接入线上环境并使用脚本语言执行管理任务的做法已经不再被提倡，无论是云原生应用还是微服务模式都极力反对这种做法。另外还有一个原因显而易见：你的应用有数个或者数十个实例，那么应该登录到哪个实例中执行管理任务呢？如果在管理任务执行的过程中，所在实例因为软硬件故障重启，或者被横向扩展机制销毁，那又该怎么办？</p>
+<p>正确的做法是，如果管理任务是修改应用配置，那么应该通过配置管理服务进行操作；如果管理任务是批处理任务，例如数据的迁移、清洗或者检查，那么应该通过云平台的批处理机制进行操作，大多数的云平台都会提供这种机制，例如Kubernetes的Jobs。</p>
+<p>本原则还提到“应用的管理进程应该和应用的常驻进程运行于同一环境，并使用相同的代码、版本和配置”，可以避免由于环境或代码等不一致造成的一些潜藏问题。虽然现在不提倡通过SSH接入应用常驻进程所在的环境并执行管理任务，但是如果你使用容器技术，那么很容易通过容器模板创建一个和应用常驻进程一致的运行环境，并在其中执行管理任务。</p>
+<p>当然如果是代码问题排查还是需要上ssh连接服务器去排查的</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000008421893#articleHeader0" target="_blank" rel="noopener">云原生时代下的12-Factor应用与实践</a></p>
+<p><a href="https://www.zybuluo.com/xishuixixia/note/786307" target="_blank" rel="noopener">作业部落</a></p>
+
+        </section>
+        
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+                
+                <a data-pjax class="newer-posts" href="/20180118/white and black.html">← 白与黑</a>
+                
+                <!-- <a class="share-button" data-original-title title>Share this Post</a> -->
+                
+                <a data-pjax class="older-posts" href="/20180122/handan.html">邯郸 →</a>
+                
+
+        </nav>
+        <br/>
+        <br/>
+        
+        <section id="comment">
+    <div id="comment-box"></div>
+</section>
+
+<!-- gitment -->
+
+  
+
+  <script type="text/javascript">
+    new Valine({
+      el: '#comment-box' ,
+      notify:true, 
+      verify:true, 
+      appId: 'CCGNDSjTudGG8P3PpVE8jf2X-gzGzoHsz',
+      appKey: 'zzCLsLsph7ttpWdAGkQUmmfL',
+      path:window.location.pathname, 
+      avatar:'identicon' 
+  });
+  </script>
+   
+
+
+<!-- -->
+
+        
+
+
+    </article>
+</main>
+
+
+  <footer class="site-footer">
+    
+    
+    
+    <a class="subscribe icon-feed" href="http://feed43.com/1225037838675024.xml"><span class="tooltip">Subscribe!</span></a>
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 莫青留 2021</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+
+
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<!-- 
+<script type="text/javascript" src="http://obbbw3q31.bkt.clouddn.com/js/lib.js"></script>
+<script type="text/javascript" src="http://obbbw3q31.bkt.clouddn.com/js/main.js"></script>
+-->
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7d78b1f59a8c4777749022c20225d06d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</html>
