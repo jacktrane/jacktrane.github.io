@@ -340,19 +340,18 @@
     </span>
 
         <section class="post-content">
-            <h4 id="数据如图"><a href="#数据如图" class="headerlink" title="数据如图:"></a>数据如图:</h4><img src="/20190402/database/select/count.htm/database/select/count/1.png" title="元图">
+            <h4 id="数据如图"><a href="#数据如图" class="headerlink" title="数据如图:"></a>数据如图:</h4><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_%E5%85%83%E5%9B%BE.png" alt="元图"></p>
 <h4 id="按照-方式查找"><a href="#按照-方式查找" class="headerlink" title="按照*方式查找 :"></a>按照*方式查找 :</h4><p><code>SELECT count(*) FROM test</code></p>
-<p>结果如下:<br><img src="/20190402/database/select/count.htm/database/select/count/2.png" title="count(*)"></p>
+<p>结果如下:<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_count.png" alt="count(*)"></p>
 <h4 id="按照指定字段查询"><a href="#按照指定字段查询" class="headerlink" title="按照指定字段查询 :"></a>按照指定字段查询 :</h4><p><code>SELECT count(name) FROM test</code></p>
-<p>结果如下:<br><img src="/20190402/database/select/count.htm/database/select/count/3.png" title="count(name)"></p>
+<p>结果如下:<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_count_name.png" alt="count(name)"></p>
 <h4 id="是按照虚拟字段查询"><a href="#是按照虚拟字段查询" class="headerlink" title="是按照虚拟字段查询:"></a>是按照虚拟字段查询:</h4><p>SELECT count(1) FROM test</p>
-<p>结果如下:<br><img src="/20190402/database/select/count.htm/database/select/count/4.png" title="count(1)"></p>
+<p>结果如下:<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_count_1.png" alt="count(1)"></p>
 <h4 id="为什么会造成以上的差异呢"><a href="#为什么会造成以上的差异呢" class="headerlink" title="为什么会造成以上的差异呢?"></a>为什么会造成以上的差异呢?</h4><p>原因是: </p>
 <ol>
-<li>count(*)其实是按每个字段读一次，对比每个字段的count，最终得出最大值6<img src="/20190402/database/select/count.htm/database/select/count/5.png" title="count(*)"></li>
-<li>count(name)则是仅读name字段下的值，此刻name中是只有4个值的，其中NULL不占空间<img src="/20190402/database/select/count.htm/database/select/count/6.png" title="count(name)"></li>
-<li>count(1)很有趣，实际上它是虚拟了一个字段，并以此此填充相应记录中的虚拟值，从而得出count(1)为6<img src="/20190402/database/select/count.htm/database/select/count/7.png" title="count(1)">
-</li>
+<li>count(*)其实是按每个字段读一次，对比每个字段的count，最终得出最大值6<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_count_2.png" alt="count()"></li>
+<li>count(name)则是仅读name字段下的值，此刻name中是只有4个值的，其中NULL不占空间<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_count_3.png" alt="count(name)"></li>
+<li>count(1)很有趣，实际上它是虚拟了一个字段，并以此此填充相应记录中的虚拟值，从而得出count(1)为6<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/sc_count_4.png" alt="count(1)"></li>
 </ol>
 <h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ol>
 <li>对于查单个字段总量，可以使用count(字段)</li>
