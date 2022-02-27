@@ -348,12 +348,12 @@
 <p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/1.png" alt></p>
 <h4 id="定位过程"><a href="#定位过程" class="headerlink" title="定位过程"></a>定位过程</h4><ol>
 <li>使用fiddler模拟请求,在服务器使用tcpdump抓包发现是一样的<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/2.png" alt="fildder请求"></li>
-<li><img src="关于http接受post请求的错误总结-go版本/3.png" alt="tcpdump抓包"></li>
+<li><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/3.png" alt="tcpdump抓包"></li>
 </ol>
-<p>但依然出现此问题<br><img src="关于http接受post请求的错误总结-go版本/1.png" alt="问题"></p>
+<p>但依然出现此问题<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/1.png" alt="问题"></p>
 <ol start="2">
 <li>本着go版本不会有问题的思想,使用控制变量法,让程序在windows\linux\docker上build与跑,还是没有找到问题</li>
-<li>好的,那说不定是go的问题,于是控制变量法,在linux上使用1.9.7和1.10.3两个go版本上跑了一遍,发现问题通了…..<br><img src="关于http接受post请求的错误总结-go版本/5.png" alt="结果"><h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4>目前仅发现go版本的1.10.3出现,暂时没有验证其他的,但这对于以前正式运行的项目来说是致命的。但也庆幸能够发现这个问题,要不然上线了就G了,感谢大神的帮忙。</li>
+<li>好的,那说不定是go的问题,于是控制变量法,在linux上使用1.9.7和1.10.3两个go版本上跑了一遍,发现问题通了…..<br><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/5.png" alt="结果"><h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4>目前仅发现go版本的1.10.3出现,暂时没有验证其他的,但这对于以前正式运行的项目来说是致命的。但也庆幸能够发现这个问题,要不然上线了就G了,感谢大神的帮忙。</li>
 </ol>
 
         </section>
