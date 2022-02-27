@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>归档: 2018/8 | 莫青留</title>
+  <title>为什么会RST | 莫青留</title>
   <meta name="description" content="jacktrane" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -294,7 +294,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#"></a></li>
+                        <li id="navbar-title"><a href="#">为什么会RST</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -313,57 +313,88 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/网络/' style='color:#D5D5D5'>网络</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">为什么会RST</h1>
+                    
+                    
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2021-11-29T14:58:21.000Z"
+                              itemprop="datePublished">2021-11-29</time>
+                    </div>
+                    
 
-    
-    <article class="post">
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/问题/'>问题</a>
-                
-                <a data-pjax href='/tags/go/'>go</a>
-                
-                
-                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
-            </div>
-            <h1 class="post-title"><a data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-08-17T15:12:12.000Z"
-                      itemprop="datePublished">2018-08-17</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                总结go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。
-旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)
-                ...
-                
-
-            </p>
-            
-            <p>
-                <a data-pjax href="/20180817/post/error/go/verison.html"
-                   class="excerpt-link">Read More...</a>
-            </p>
-            
+        <section class="post-content">
+            <p>近日，在工作中遇到了一个相对棘手的网络问题</p>
+<p><strong>go客户端在下载Nginx服务的图片过程中时不时会出现一些<code>connection reset by peer</code></strong></p>
+<p>实际就是Nginx发了<code>RST</code>过来</p>
+<p>针对于这个问题查了一圈，网上一大堆清一色答复：</p>
+<ol>
+<li>SYN数据段指定的目的端口处没有接收进程在等待。</li>
+<li>TCP想放弃一个已经存在的连接。</li>
+<li>TCP接收到一个数据段，但是这个数据段所标识的连接不存在。</li>
+</ol>
+<p>那么我们就按照答复一个一个</p>
+<h1 id="shsh"><a href="#shsh" class="headerlink" title="shsh"></a>shsh</h1><h3 id="shhs"><a href="#shhs" class="headerlink" title="shhs"></a>shhs</h3>
         </section>
+        
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+                
+                <a data-pjax class="newer-posts" href="/20210825/database/cassandra/simple.html">← Cassandra的简单理解</a>
+                
+                <!-- <a class="share-button" data-original-title title>Share this Post</a> -->
+                
+                <a data-pjax class="older-posts" href="/20211202/null.html">rust基础 →</a>
+                
+
+        </nav>
+        <br/>
+        <br/>
+        
+        <section id="comment">
+    <div id="comment-box"></div>
+</section>
+
+<!-- gitment -->
+
+  
+
+  <script type="text/javascript">
+    new Valine({
+      el: '#comment-box' ,
+      notify:true, 
+      verify:true, 
+      appId: 'CCGNDSjTudGG8P3PpVE8jf2X-gzGzoHsz',
+      appKey: 'zzCLsLsph7ttpWdAGkQUmmfL',
+      path:window.location.pathname, 
+      avatar:'identicon' 
+  });
+  </script>
+   
+
+
+<!-- -->
+
+        
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page 1 of 1</span>
-        
-    </nav>
 </main>
 
 

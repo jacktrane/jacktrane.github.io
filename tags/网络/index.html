@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>归档: 2018/8 | 莫青留</title>
+  <title>标签: 网络 | 莫青留</title>
   <meta name="description" content="jacktrane" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -325,34 +325,41 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/问题/'>问题</a>
-                
-                <a data-pjax href='/tags/go/'>go</a>
+                <a data-pjax href='/tags/网络/'>网络</a>
                 
                 
                 <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
             </div>
-            <h1 class="post-title"><a data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+            <h1 class="post-title"><a data-pjax href="/20211129/why rst.html">为什么会RST</a>
             </h1>
 
             <div class="post-meta">
                 Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2018-08-17T15:12:12.000Z"
-                      itemprop="datePublished">2018-08-17</time>
+                <time datetime="2021-11-29T14:58:21.000Z"
+                      itemprop="datePublished">2021-11-29</time>
             </div>
         </header>
         <section class="post-excerpt">
             <p>
                 
-                总结go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。
-旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)
+                近日，在工作中遇到了一个相对棘手的网络问题
+go客户端在下载Nginx服务的图片过程中时不时会出现一些connection reset by peer
+实际就是Nginx发了RST过来
+针对于这个问题查了一圈，网上一大堆清一色答复：
+
+SYN数据段指定的目的端口处没有接收进程在等待。
+TCP想放弃一个已经存在的连接。
+TCP接收到一个数据段，但是这个数据段所标识的连接不存在。
+
+那么我们就按照答复一个一个
+shshshhs
                 ...
                 
 
             </p>
             
             <p>
-                <a data-pjax href="/20180817/post/error/go/verison.html"
+                <a data-pjax href="/20211129/why rst.html"
                    class="excerpt-link">Read More...</a>
             </p>
             

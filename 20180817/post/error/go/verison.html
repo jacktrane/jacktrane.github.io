@@ -51,6 +51,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/20211202/null.html">rust基础</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/20211129/why rst.html">为什么会RST</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/20210825/database/cassandra/simple.html">Cassandra的简单理解</a>
                                 </li>
                                 
@@ -126,7 +134,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/study/">&nbsp;&nbsp;&nbsp;学习</a>
-                                    <small>8</small>
+                                    <small>9</small>
                                 </li>
                                 
                                 <li class="search-category-li mp-pjax">
@@ -182,6 +190,11 @@
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/网络/">&nbsp;&nbsp;&nbsp;网络</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/规范/">&nbsp;&nbsp;&nbsp;规范</a>
                                     <small>1</small>
                                 </li>
@@ -212,6 +225,10 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/20211202/null.html">rust基础</a>
+                
+                    <a  data-pjax href="/20211129/why rst.html">为什么会RST</a>
                 
                     <a  data-pjax href="/20210825/database/cassandra/simple.html">Cassandra的简单理解</a>
                 
@@ -258,6 +275,8 @@
                     <a data-pjax href="/tags/有趣的小东西/">&nbsp;&nbsp;有趣的小东西</a>
                 
                     <a data-pjax href="/tags/短句/">&nbsp;&nbsp;短句</a>
+                
+                    <a data-pjax href="/tags/网络/">&nbsp;&nbsp;网络</a>
                 
                     <a data-pjax href="/tags/规范/">&nbsp;&nbsp;规范</a>
                 
@@ -325,7 +344,8 @@
         <section class="post-content">
             <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。</p>
 <p>旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)的字段解析到地址map中，没填content-type解析到文本map中，这样的话对于请求过来的符合标准协议的text/plain字段我就无法在文本map中找到，从而导致一堆的不可访问。</p>
-<h4 id="故事背景"><a href="#故事背景" class="headerlink" title="故事背景"></a>故事背景</h4><p>在提供一个POST请求接口给一个其他部门的同事之后,该同事使用自己的编写的程序进行提交时发现返回有问题,我打log发现他提交的数据被go解析到了文件map中,于是在大神的帮助下进行抓包研究发现该同事提交的data中的值含有postman中没有提交的content-type:text/plain,遂查了一下标准协议,发现该提交是没有问题的。<br>百思不得其解。<br>问题如下:<br><img src="/20180817/post/error/go/verison.htm/post/error/go/verison/1.png" title="问题"></p>
+<h4 id="故事背景"><a href="#故事背景" class="headerlink" title="故事背景"></a>故事背景</h4><p>在提供一个POST请求接口给一个其他部门的同事之后,该同事使用自己的编写的程序进行提交时发现返回有问题,我打log发现他提交的数据被go解析到了文件map中,于是在大神的帮助下进行抓包研究发现该同事提交的data中的值含有postman中没有提交的content-type:text/plain,遂查了一下标准协议,发现该提交是没有问题的。<br>百思不得其解。<br>问题如下:<br></p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/1.png" alt></p>
 <h4 id="定位过程"><a href="#定位过程" class="headerlink" title="定位过程"></a>定位过程</h4><ol>
 <li>使用fiddler模拟请求,在服务器使用tcpdump抓包发现是一样的<img src="/20180817/post/error/go/verison.htm/post/error/go/verison/2.png" title="fildder请求">
 <img src="/20180817/post/error/go/verison.htm/post/error/go/verison/3.png" title="tcpdump抓包">
@@ -392,7 +412,7 @@
     <a class="subscribe icon-feed" href="http://feed43.com/1225037838675024.xml"><span class="tooltip">Subscribe!</span></a>
     
     <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; 莫青留 2021</section>
+        <section class="copyright"><a href="/"></a> &copy; 莫青留 2022</section>
         <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
         <section> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备16049612号-1</a></section>
     </div>
