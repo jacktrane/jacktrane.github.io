@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>rust基础 | 莫青留</title>
+  <title>浅谈分布式系统的一致性 | 莫青留</title>
   <meta name="description" content="jacktrane" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -328,7 +328,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">rust基础</a></li>
+                        <li id="navbar-title"><a href="#">浅谈分布式系统的一致性</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -356,31 +356,187 @@
     <span class="post-meta">
                   <div class="tag-tile">
                       
+                      
+                      <a data-pjax href='/tags/分布式/' style='color:#D5D5D5'>分布式</a>
+                      
+                      <a data-pjax href='/tags/共识算法/' style='color:#D5D5D5'>共识算法</a>
+                      
+                      
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">rust基础</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">浅谈分布式系统的一致性</h1>
                     
                     
                     <div class="post-meta">
                         Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2021-12-02T15:56:33.000Z"
-                              itemprop="datePublished">2021-12-02</time>
+                        <time datetime="2022-04-07T13:20:33.000Z"
+                              itemprop="datePublished">2022-04-07</time>
                     </div>
                     
 
     </span>
 
         <section class="post-content">
-            
+            <h1 id="分布式系统的由来"><a href="#分布式系统的由来" class="headerlink" title="分布式系统的由来"></a>分布式系统的由来</h1><p>分布式系统是由一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。</p>
+<blockquote>
+<p>简单来说，就是通过分治法，将一个任务拆成多个子任务分给不同计算机节点处理</p>
+</blockquote>
+<p>以下是一个常见的互联网架构图，也是一个基本的分布式系统，<code>Nginx</code>层负责代理，<code>WebServer</code>层负责中台组装数据，<code>service</code>层由很多的微服务（无状态、有状态都存在）组成，还有专门的DB。</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220407223343.png" alt="img"></p>
+<h1 id="分片与副本"><a href="#分片与副本" class="headerlink" title="分片与副本"></a>分片与副本</h1><h2 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h2><p>以DB举例：</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220407223703.png" alt="img"></p>
+<p>对于数据级别到数百上千万的DB，最终都会走向分库分表的，而这种分库分表其实就是分片的其中一个表征。</p>
+<p>这样做的好处是：</p>
+<ol>
+<li>提升性能和并发，操作被分发到不同的分片，相互独立</li>
+<li>提升系统的可用性，即使部分分片不能用，其他分片不会受到影响</li>
+</ol>
+<p>但它并不能高可用，因为在分布式系统下，随着节点的增多，下面的问题出现的概率将会指数级增加</p>
+<ol>
+<li>进程挂掉、断电、磁盘损害</li>
+<li>断网、高延迟</li>
+</ol>
+<p>为了解决以上的问题，副本出现了。</p>
+<h2 id="副本"><a href="#副本" class="headerlink" title="副本"></a>副本</h2><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220407224013.png" alt="img"></p>
+<p>通过副本（多活或者是主备策略），在原DB或网络延迟、或宕机发生时，能够柔性替换，保证业务的连续性。</p>
+<p>由上面的说明，我们可以看出，一个分布式系统，内部必然会出现<strong>分片</strong>、<strong>副本</strong>等功能至少一种。</p>
+<p><strong>那么多副本怎么保证数据的一致性？</strong></p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220409145539.png" alt="img"></p>
+<ol>
+<li>网络要足够保障业务连续性</li>
+<li>多节点之间对数据的一致性操作有共识（排除拜占庭将军问题）</li>
+</ol>
+<h1 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>根据使用和学术研究的角度，或者说根据系统内外的角度来看，可以分为用户的角度、数据的角度。</p>
+<p>在用户的角度上看：</p>
+<ol>
+<li>强一致性： 向系统写入一个值后，后续任意时刻的读取一定成功。</li>
+<li>弱一致性： 向系统写入一个值后，后续的读操作可能读出来，也可能读不出来。</li>
+<li>最终一致性（弱一致性特定场景）：向系统写入一个值后，后续立刻的读操作可能读不出来，但是在某个时间段后，读取一定成功。 例如，读写分离的关系型数据库。</li>
+</ol>
+<p>数据角度上的一致性？</p>
+<h2 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h2><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220407230211.png" alt="img"></p>
+<p><strong>一致性</strong> 在分布式环境中,一致性是指数据在多个副本之间是否能够保持一致的特性（强一致性）。</p>
+<p><strong>可用性</strong> 可用性是指系统提供的服务必须一直处于可用的状态,对于用户的每一个操作请求总是能够在有限的时间内返回结果。</p>
+<p><strong>分区容错性</strong> 分布式系统在遇到任何网络分区故障的时候,仍然需要能够保证对外提供满足一致性和可用性的服务,除非是整个网络环境都发生了故障。</p>
+<table>
+<thead>
+<tr>
+<th>选 择</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CA</td>
+<td>放弃分区容错性，加强一致性和可用性，其实就是传统的单机数据库的选择</td>
+</tr>
+<tr>
+<td>AP</td>
+<td>放弃一致性（这里说的一致性是强一致性），追求分区容错性和可用性，这是很多分布式系统设计时的选择，例如很多NoSQL系统就是如此；如：Cassandra</td>
+</tr>
+<tr>
+<td>CP</td>
+<td>放弃可用性，追求一致性和分区容错性，基本不会选择，网络问题会直接让整个系统不可用；如：Etcd</td>
+</tr>
+</tbody>
+</table>
+<p>在网络分区发生的情况下，分布式系统不能同时保证一致性和可用性。 除非是单节点系统， 否则无法同时保证 CA。</p>
+<h2 id="为什么C和A只能选一个？"><a href="#为什么C和A只能选一个？" class="headerlink" title="为什么C和A只能选一个？"></a>为什么C和A只能选一个？</h2><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220409150516380.png" alt="img"></p>
+<p>P1 P2就是两个节点的意思，正常情况下，当写入a=1后，P1同步到P2后，在任意节点读取时a都是等于1。</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407230939866-20220409150525402.%28null%29" alt="img"></p>
+<p>但因为网络问题或宕机等情况发生，P1同步不到P2，这个时候网络分区就出现了。</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407230950746.%28null%29" alt="img"></p>
+<ol>
+<li>我们选择可用性时，意味P2节点也要对外提供服务，那么在a=1同步失败后，P1、P2对外提供的数据是不一致的。</li>
+<li>我们选择一致性时，在a=1同步失败后，为了保证一致性，P2不能对外提供服务，则意味着P2是不可用的。</li>
+</ol>
+<p>我们可以得出结论：<strong>在网络发生分区的情况下，我们必须在可用性和一致性之间做出选择</strong>。</p>
+<p>那么如果以同个节点对外提供服务，那么是否可以CA都拥有？</p>
+<h3 id="读写同一节点，可以避开分区影响吗"><a href="#读写同一节点，可以避开分区影响吗" class="headerlink" title="读写同一节点，可以避开分区影响吗?"></a>读写同一节点，可以避开分区影响吗?</h3><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231007761.%28null%29" alt="img"></p>
+<p>由上图可见，也是无法避开的。</p>
+<p>如果作为master的P1在将a=1的数据同步给P2之前挂了</p>
+<ol>
+<li>为了保证可用性，那么P2将转为master，但因为P2没有同步P1的数据，那么此刻提供出来的数据是不一致的。</li>
+<li>为了保证一致性，P2也不能对外提供服务，那么就意味着整个系统是不可用的。</li>
+</ol>
+<h2 id="数据同步的两种方式"><a href="#数据同步的两种方式" class="headerlink" title="数据同步的两种方式"></a>数据同步的两种方式</h2><p>我们有说 “节点间必然有数据同步的机制， 不然无法读取到跨节点的写更新”。</p>
+<p>数据同步的方式可以分为：</p>
+<ol>
+<li>同步： 所有  节点写入完成后，返回写入成功。</li>
+<li>异步： 先返回写入成功，再同步到其他节点。</li>
+</ol>
+<p>下面是两种数据同步方式的示例，紫色长条表示数据备份：</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231019903.%28null%29" alt="img"></p>
+<p>当然，同步和异步的方式并不是绝对的， 我们可以设计出先同步写 N 个节点，回复客户端，再异步写入其他节点的方式（典型例子：etcd）。</p>
+<p>不过，我们稍加分析即可以发现， 网络分区发生的时候，无论同步还是异步的方式，如果不放弃可用性，都不能保证一致性。</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231027375.%28null%29" alt="img"></p>
+<h1 id="保证一致性的理论"><a href="#保证一致性的理论" class="headerlink" title="保证一致性的理论"></a>保证一致性的理论</h1><h2 id="Raft理论"><a href="#Raft理论" class="headerlink" title="Raft理论"></a>Raft理论</h2><h3 id="状态机复制"><a href="#状态机复制" class="headerlink" title="状态机复制"></a>状态机复制</h3><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/1581915425376754..png" alt="img"></p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/v2-c5675dd62a34e4954dc044eeed8d9d42_1440w.jpg" alt="img"></p>
+<p>技术来源于生活，像地铁闸口，就是一个典型的状态机状态，每一次的状态都是覆盖迭代，不存在什么随便修改的问题。</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231043678.%28null%29" alt="img"></p>
+<p>像上图，在共识算法写入log并同步到其他节点后，就会将新的字段状态同步到内存中的stat machine。</p>
+<p>在Raft协议中，有一个强Leader，由它全权负责接受客户端的请求，并将命令作为日志复制给其它服务器，在确认安全后，将日志提交执行。当Leader故障时，则会选举产生一个新的Leader。在Leader的帮助下，Raft协议将一致性问题简化，分解为了以下三个子问题：</p>
+<p>1）领导选举（Leader Election）：当现有的Leader故障时，必须重新选出一个新的Leader。</p>
+<p>2）日志复制（Log Replication）：Leader接收来自客户端的命令，记录为日志，并复制给集群中的其它服务器，且强制其它服务器的日志与Leader保持一致。</p>
+<p>3）安全措施（Safety）：通过一些措施保证系统安全，例如确保所有服务器均按照相同顺序执行相同命令的措施。</p>
+<h3 id="日志复制过程"><a href="#日志复制过程" class="headerlink" title="日志复制过程"></a><strong>日志复制过程</strong></h3><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231049367.%28null%29" alt="img"></p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231100698.%28null%29" alt="img"></p>
+<p>客户端提交每一条命令都会被按顺序记录到Leader的日志中，每一条命令都包含Term编号和顺序索引，然后向其他节点并行发送AppendEntries RPC用以复制命令，当大多数节点成功复制后，Leader就会提交命令，即执行该命令并且将执行结果返回客户端，Raft保证已经提交的命令最终也会被其他节点成功执行。Leader会保存有当前已经提交的最高日志编号。顺序性确保了相同日志索引处的命令是相同的，而且之前的命令也是相同的。当发送AppendEntries RPC时，会包含Leader上一条刚处理过的命令，接收节点如果发现上一条命令不匹配，就会拒绝执行。</p>
+<h3 id="日志不一致的情况？"><a href="#日志不一致的情况？" class="headerlink" title="日志不一致的情况？"></a>日志不一致的情况？</h3><p>在现实情况下，主从节点的日志可能不一致（例如在消息到达从节点前主节点挂了，而从节点被选为了新的主节点，此时主从节点的日志不一致）。Raft 算法中，主节点需要处理不一致的情况，它要求所有的从节点复制自己的所有日志。</p>
+<p>要复制所有日志，就要先找到日志开始不一致的位置，如何做到呢？Raft 当主节点接收到新的 command 时，会发送 <code>AppendEntries</code> 让从节点复制日志，不一致的情况也会在这时被处理（<code>AppendEntries</code> 消息同时还兼职作为心跳信息）。日志不一样的情况如下：</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231108894.%28null%29" alt="img"></p>
+<p>主节点需要为每个从节点记录一个 <code>nextIndex</code>，作为该从节点下一条要发送的日志的编号。当一个节点刚被选为主节点时，为所有从节点的 <code>nextIndex</code> 初始化自己最大日志编号加 1（如上图示例则为 <code>11</code>）。接着主节点发送 <code>AppendEntries</code> 给从节点，此时从节点会进行一致性检查（Consistency Check）。</p>
+<p>所谓一致性检查，指的是当主节点发送 <code>AppendEntries</code> 消息通知从节点添加条目时，需要将新条目 A 之前的那个条目 B 的 log index 和 term，这样，当从节点收到消息时，就可以判断自己第log index 条日志的 term 是否与 B 的 term 相同，如果不相同则拒绝该消息，如果相同则添加条目 A。</p>
+<p>主节点的消息被某个从节点拒绝后，主节点会将该从节点的 <code>nextIndex</code> 减一再重新发送<code>AppendEntries</code> 消息。不断重试，最终就能找主从节点日志一致的 log index，并用主节点的新日志覆盖从节点的旧日志。当然，如果从节点接收 <code>AppendEntries</code> 消息后，主节点会将 <code>nextIndex</code> 增加一，且如果当前的最新 log index 大于 <code>nextIndex</code> 则会继续发送消息。</p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231118262.%28null%29" alt="img"></p>
+<h5 id="保证："><a href="#保证：" class="headerlink" title="保证："></a>保证：</h5><ul>
+<li><p><strong>如果两个日志条目有相同的 log index 和 term，则它们的内容一定相同。</strong></p>
+</li>
+<li><p><strong>如果两个节点中的两个条目有相同的 log index 和 term，则它们之前的所有日志一定相同。</strong></p>
+</li>
+</ul>
+<p><strong>选主？安全性保证？</strong>可以留着各位自行查资料。</p>
+<p>未提及的如 gossip、paxos。</p>
+<p>以上是偏存储相关的共识算法的一致性保障，那么<strong>不同服务之间为保证业务连续性的一致性怎么做？</strong></p>
+<h2 id="2PC-3PC"><a href="#2PC-3PC" class="headerlink" title="2PC/3PC"></a>2PC/3PC</h2><p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231125905.%28null%29" alt="img"></p>
+<p>1.1的操作事实上就是让参与者直接执行。</p>
+<p>问题：</p>
+<ol>
+<li>阻塞</li>
+<li>协调者单点问题</li>
+</ol>
+<p>三阶段提交（Three-phase commit）主要做的事情：</p>
+<ol>
+<li><p>引入超时机制。同时在协调者和参与者中都引入超时机制。</p>
+</li>
+<li><p>并且把两阶段提交协议的第一个阶段（协调者）拆分成了两步：<strong>询问，然后再锁资源，最后真正提交</strong>。</p>
+</li>
+</ol>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/%28null%29-20220407231133646.%28null%29" alt="img"></p>
+<p><strong>一旦出现网络或宕机问题，数据不一致性必然存在！！！</strong></p>
+<p> <strong>分布式事务最好的解决方案是尽量避免出现分布式事务！</strong></p>
+<p><strong>市面上常用的分布式事务框架：seata</strong></p>
+<h2 id="基于BASE的一致性保证"><a href="#基于BASE的一致性保证" class="headerlink" title="基于BASE的一致性保证"></a>基于BASE的一致性保证</h2><h3 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h3><h4 id="基本可用（Basically-Available）"><a href="#基本可用（Basically-Available）" class="headerlink" title="基本可用（Basically Available）"></a>基本可用（Basically Available）</h4><p>基本可用是指分布式系统在出现故障的时候，允许损失部分可用性，即保证核心可用。</p>
+<p>电商大促时，为了应对访问量激增，部分用户可能会被引导到降级页面，服务层也可能只提供降级服务。这就是损失部分可用性的体现。(削峰填谷，延迟响应，服务降级)</p>
+<h4 id="软状态（-Soft-State）"><a href="#软状态（-Soft-State）" class="headerlink" title="软状态（ Soft State）"></a>软状态（ Soft State）</h4><p>软状态是指允许系统存在中间状态，而该中间状态不会影响系统整体可用性。分布式存储中一般一份数据至少会有三个副本，允许不同节点间副本同步的延时就是软状态的体现。mysql replication 的异步复制也是一种体现。</p>
+<h4 id="最终一致性（-Eventual-Consistency）"><a href="#最终一致性（-Eventual-Consistency）" class="headerlink" title="最终一致性（ Eventual Consistency）"></a>最终一致性（ Eventual Consistency）</h4><p>最终一致性是指系统中的所有数据副本经过一定时间后，最终能够达到一致的状态。弱一致性和强一致性相反，最终一致性是弱一致性的一种特殊情况。(写时修复，读时修复)</p>
+<p><strong>核心思想：即使无法做到强一致性，但每个应用都可以根据自身业务特点，采用适当的方式来使系统达到最终一致性</strong></p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220407231204.png" alt="img"></p>
+<p><img src="https://blog-1252168869.cos.ap-chengdu.myqcloud.com/image/20220407231220.png" alt="img"></p>
+<p>抢红包服务只是数字的展现，抢到的金额通过kafka，交由发放服务去进行金额发放。而这种模式是市面上的很多分布式系统会做的事情。</p>
+<p>引用：</p>
+<p><a href="https://www.cnblogs.com/xybaby/p/7787034.html" target="_blank" rel="noopener">https://www.cnblogs.com/xybaby/p/7787034.html</a></p>
+<p><a href="https://writings.sh/post/cap-and-consistency-models" target="_blank" rel="noopener">https://writings.sh/post/cap-and-consistency-models</a></p>
+<p><a href="https://blog.csdn.net/lihao21/article/details/114879304" target="_blank" rel="noopener">https://blog.csdn.net/lihao21/article/details/114879304</a></p>
+<p><a href="https://lotabout.me/2019/Raft-Consensus-Algorithm/" target="_blank" rel="noopener">https://lotabout.me/2019/Raft-Consensus-Algorithm/</a></p>
+
         </section>
         
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
                 
-                <a data-pjax class="newer-posts" href="/20211129/why rst.html">← 为什么会RST</a>
+                <a data-pjax class="newer-posts" href="/20211202/null.html">← rust基础</a>
                 
                 <!-- <a class="share-button" data-original-title title>Share this Post</a> -->
-                
-                <a data-pjax class="older-posts" href="/20220407/on/the/consistency/of/distributed/systems.html">浅谈分布式系统的一致性 →</a>
                 
 
         </nav>

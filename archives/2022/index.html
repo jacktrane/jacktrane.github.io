@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>rust基础 | 莫青留</title>
+  <title>归档: 2022 | 莫青留</title>
   <meta name="description" content="jacktrane" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -328,7 +328,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">rust基础</a></li>
+                        <li id="navbar-title"><a href="#"></a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -347,74 +347,64 @@
 
 
 <!-- -->
-<!--<body class="post-template">-->
+<!--<body class="home-template">-->
 <!---->
   
-
 <main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">rust基础</h1>
-                    
-                    
-                    <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2021-12-02T15:56:33.000Z"
-                              itemprop="datePublished">2021-12-02</time>
-                    </div>
-                    
 
-    </span>
+    
+    <article class="post">
 
-        <section class="post-content">
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/分布式/'>分布式</a>
+                
+                <a data-pjax href='/tags/共识算法/'>共识算法</a>
+                
+                
+                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
+            </div>
+            <h1 class="post-title"><a data-pjax href="/20220407/on/the/consistency/of/distributed/systems.html">浅谈分布式系统的一致性</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2022-04-07T13:20:33.000Z"
+                      itemprop="datePublished">2022-04-07</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                分布式系统的由来分布式系统是由一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。
+
+简单来说，就是通过分治法，将一个任务拆成多个子任务分给不同计算机节点处理
+
+以下是一个常见的互联网架构图，也是一个基本的分布式系统，Nginx层负责代理，WebServer层负责中台组装数据，service层由很多的微服务（无状态、有状态都存在）组成，还有专门的DB。
+
+分片与副本分片以DB举例：
+
+对于数据级别到数百上千万的DB
+                ...
+                
+
+            </p>
+            
+            <p>
+                <a data-pjax href="/20220407/on/the/consistency/of/distributed/systems.html"
+                   class="excerpt-link">Read More...</a>
+            </p>
             
         </section>
-        
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-                
-                <a data-pjax class="newer-posts" href="/20211129/why rst.html">← 为什么会RST</a>
-                
-                <!-- <a class="share-button" data-original-title title>Share this Post</a> -->
-                
-                <a data-pjax class="older-posts" href="/20220407/on/the/consistency/of/distributed/systems.html">浅谈分布式系统的一致性 →</a>
-                
-
-        </nav>
-        <br/>
-        <br/>
-        
-        <section id="comment">
-    <div id="comment-box"></div>
-</section>
-
-<!-- gitment -->
-
-  
-
-  <script type="text/javascript">
-    new Valine({
-      el: '#comment-box' ,
-      notify:true, 
-      verify:true, 
-      appId: 'CCGNDSjTudGG8P3PpVE8jf2X-gzGzoHsz',
-      appKey: 'zzCLsLsph7ttpWdAGkQUmmfL',
-      path:window.location.pathname, 
-      avatar:'identicon' 
-  });
-  </script>
-   
-
-
-<!-- -->
-
-        
-
-
     </article>
+    
+    <nav class="pagination" role="pagination">
+        
+        <span class="page-number">Page 1 of 1</span>
+        
+    </nav>
 </main>
 
 
