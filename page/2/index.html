@@ -51,6 +51,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/20220502/yuanquanzhengyi.html">圆圈正义读书笔记</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/20220407/on/the/consistency/of/distributed/systems.html">浅谈分布式系统的一致性</a>
                                 </li>
                                 
@@ -151,6 +155,11 @@
                                     <small>5</small>
                                 </li>
                                 
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/读书/">&nbsp;&nbsp;&nbsp;读书</a>
+                                    <small>1</small>
+                                </li>
+                                
                                 </div>
                             </ul>
                         </div>
@@ -184,8 +193,8 @@
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/分布式-共识算法/">&nbsp;&nbsp;&nbsp;分布式 共识算法</a>
-                                    <small>0</small>
+                                    <a href="/tags/学习/">&nbsp;&nbsp;&nbsp;学习</a>
+                                    <small>1</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -211,6 +220,11 @@
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/短句/">&nbsp;&nbsp;&nbsp;短句</a>
                                     <small>5</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/笔记/">&nbsp;&nbsp;&nbsp;笔记</a>
+                                    <small>1</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -249,6 +263,8 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/20220502/yuanquanzhengyi.html">圆圈正义读书笔记</a>
                 
                     <a  data-pjax href="/20220407/on/the/consistency/of/distributed/systems.html">浅谈分布式系统的一致性</a>
                 
@@ -291,6 +307,8 @@
                 
                     <a data-pjax href="/categories/life/">&nbsp;&nbsp;生活</a>
                 
+                    <a data-pjax href="/categories/读书/">&nbsp;&nbsp;读书</a>
+                
                 
                     <a data-pjax href="/tags/go/">&nbsp;&nbsp;go</a>
                 
@@ -298,7 +316,7 @@
                 
                     <a data-pjax href="/tags/分布式/">&nbsp;&nbsp;分布式</a>
                 
-                    <a data-pjax href="/tags/分布式-共识算法/">&nbsp;&nbsp;分布式 共识算法</a>
+                    <a data-pjax href="/tags/学习/">&nbsp;&nbsp;学习</a>
                 
                     <a data-pjax href="/tags/微服务/">&nbsp;&nbsp;微服务</a>
                 
@@ -309,6 +327,8 @@
                     <a data-pjax href="/tags/有趣的小东西/">&nbsp;&nbsp;有趣的小东西</a>
                 
                     <a data-pjax href="/tags/短句/">&nbsp;&nbsp;短句</a>
+                
+                    <a data-pjax href="/tags/笔记/">&nbsp;&nbsp;笔记</a>
                 
                     <a data-pjax href="/tags/网络/">&nbsp;&nbsp;网络</a>
                 
@@ -352,6 +372,46 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/问题/'>问题</a>
+                
+                <a data-pjax href='/tags/go/'>go</a>
+                
+                
+                <!-- <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span> -->
+            </div>
+            <h1 class="post-title"><a data-pjax href="/20180817/post/error/go/verison.html">关于http接受post请求的错误总结-go版本</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2018-08-17T15:12:12.000Z"
+                      itemprop="datePublished">2018-08-17</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                总结go对HTTP请求中的form-data类型body会解析到结构体的两个字段中，前一个是用于处理文本的map，后一个是用于处理文件流的地址map。
+旧版本中对于content-type为text/plain等文本格式或不设置content-type的字段解析到文本map，将content-type:image/png等文件格式的解析到地址map中1.10.3版本中将有填content-type(现在暂时只验证过text/plain)
+                ...
+                
+
+            </p>
+            
+            <p>
+                <a data-pjax href="/20180817/post/error/go/verison.html"
+                   class="excerpt-link">Read More...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
